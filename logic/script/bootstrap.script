@@ -4,7 +4,7 @@ local function start(self)
     self.loading=true
     report.set_stage('Loading game assets')
     msg.post('#loading','startup_loading')
-    -- Preserve the failing load path so any new crash identifies the real cause.
+    -- The loader stays asynchronous; 0.2.3 repairs and validates the packaged atlas.
     timer.delay(.15,false,function() msg.post('#main','async_load') end)
 end
 function init(self)

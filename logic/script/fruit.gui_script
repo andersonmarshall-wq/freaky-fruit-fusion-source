@@ -134,7 +134,7 @@ function init(self)
         text('Edited tempo, tone & volume; CC BY 4.0',360,832,.25,C.ink,'overlay'),
         text('Tiny Pops & Sparkles sound effects',360,796,.28,C.ink,'overlay'),
         text('Based on Wateru by AsetSiya (MIT)',360,559,.27,C.ink,'overlay'),
-        text('Freaky Fruit Fusion 0.2.2',360,423,.25,C.ink,'overlay')}
+        text('Freaky Fruit Fusion 0.2.3',360,423,.25,C.ink,'overlay')}
     self.credit_links={pill('RDBI - Kawaii Fruits',360,1010,460,68,'overlay'),
         pill('chajamakesmusic',360,885,460,68,'overlay'),
         pill('Candle Light',360,744,460,68,'overlay'),

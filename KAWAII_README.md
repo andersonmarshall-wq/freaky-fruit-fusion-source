@@ -89,14 +89,9 @@ pile/scoring/shake test. A loaded peach measured about 0.091 logarithmic compres
 coconut; its center settled about 3 pixels below the rigid support height, and pressure activated stress.
 All shipped OGGs decode successfully. The local art preview has been visually checked and is excluded from public source control.
 
-The 0.2.1 phone retest showed the loading screen before the app closed itself. The exact native
-failure is still unknown. Version 0.2.2 adds local crash recovery and paginated **Crash details**;
-install over the previous app, reopen after any failure, and capture every report page.
-It retains the OpenGL ES engine and existing load path so the device can supply failure evidence.
-An explicit adaptive icon now supplies the foreground and peach background to Android launchers.
-
-Version 0.2.2 passed actual OpenGL rendering and touch-position smoke tests at 1080 × 2424,
-including a real synthetic engine dump, recovery navigation, retry, fruit drop, and credits panel.
-The headless renderer substitutes a blank texture for the 4096-pixel atlas, so it verifies script
-and physics behavior, not appearance. Physical Android startup remains unverified; diagnose the
-phone report before tuning the mix, vigorous-shake threshold, or pile feel.
+Version 0.2.2's phone report and APK inspection exposed a truncated compiled atlas.
+Version 0.2.3 rebuilds it from source and validates the finished APK's complete texture data;
+see [ANDROID_STARTUP.md](docs/ANDROID_STARTUP.md) for the evidence and regression check.
+OpenGL rendering, recovery, report navigation, fruit drop, and credits pass at 1080 x 2424.
+The Android update certificate is unchanged. Install over the previous app and tap **Try game**
+if the old recovery screen appears. Physical-phone confirmation remains outstanding.

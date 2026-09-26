@@ -3,7 +3,7 @@
 A kawaii fruit-merging game for Android, built with Defold.
 Based on [Wateru by AsetSiya](https://github.com/asetsiya/wateru), with its MIT license retained.
 
-**Public source, version 0.2.2 (diagnostic).** The paid fruit art and selected third-party assets
+**Public source, version 0.2.3.** The paid fruit art and selected third-party assets
 are supplied locally. See [ASSETS.md](ASSETS.md) before building.
 Two matching fruits fuse into the next kind, ending in a **whole, glowing golden watermelon**.
 There are no sliced watermelons in the playable progression.
@@ -24,12 +24,11 @@ The pile, current score, best score, and settings save locally. This prototype r
 
 ## What's in this version
 
-**0.2.2 diagnostic build:** local crash recovery with a readable, paginated **Crash details**
-screen, startup-stage breadcrumbs, and an adaptive Android launcher icon with a peach background.
-Android version code 3 and the unchanged package/signing certificate allow updating earlier builds
-in place. Install over the existing app to retain its crash report and saved game.
-This is not yet a confirmed fix for the phone's startup crash.
-
+**0.2.3:** repairs a truncated fruit atlas in the packaged APK. Android packaging now rebuilds
+all resources from source in an isolated directory and checks the finished APK for complete
+texture payloads. Local crash recovery and the adaptive peach launcher icon are retained.
+Android version code 4 and the unchanged signing certificate permit an in-place update.
+Tap **Try game** if the recovery screen still shows the previous crash.
 A build you sign yourself requires your own package/signing setup; signing keys are not included.
 
 - Twelve kawaii fruit tiers, including honeydew and cantaloupe; a pulsing halo surrounds the golden final tier.
@@ -46,20 +45,18 @@ then Build / Run. First follow [ASSETS.md](ASSETS.md) to import your locally lic
 For Android, choose **Project → Bundle → Android Application**, ARM64, debug, APK.
 The project uses package `com.freakyfruit.fusion`. APKs and signing keys are not stored in this source repository.
 
-The 0.2.0 APK showed a blank screen on the target phone. Version 0.2.1 switched to OpenGL ES,
-disabled the Vulkan quality probe, and added an asynchronous loading screen. The new phone
-recording confirms that screen appears before the app closes itself during startup. The exact
-native failure remains unknown; desktop rendering does not establish Android compatibility.
+The phone's 0.2.2 crash report identified a texture upload failure. Inspection of the actual
+APK found a 4096 x 4096 RGBA atlas with only 20,971,471 of its required 67,108,864 payload
+bytes. Version 0.2.3 rebuilds that atlas completely and rejects malformed textures before
+publishing the APK. See [the investigation and verification](docs/ANDROID_STARTUP.md).
 
-Version 0.2.2 reads the engine's previous crash dump and pauses at a recovery screen. Open
-**Crash details** and capture every page. If the app closes on its first launch, reopen it to
-read the new report. **Try game** retries loading. Reports remain on the device; there is no
-telemetry or automatic upload. If Android provided no native dump, the last startup stage is shown.
+The new guard rejects the old APK and passes the repaired APK. Recovery navigation, actual
+game rendering, and simulated touch/drop input pass the desktop OpenGL smoke test at
+**1080 x 2424**. APK signatures and the matching update certificate are verified. An on-device
+retest is still needed to confirm startup on the target phone.
 
-Recovery, native-dump decoding, report navigation, actual game rendering, and simulated
-touch/drop input passed the desktop OpenGL smoke test at **1080 × 2424**. APK signatures,
-update certificate, version, and adaptive-icon resources were checked. Physical-phone startup
-and launcher appearance still need verification.
+Reports stay on the device. If a new failure occurs, reopen the app and capture all **Crash details**
+pages. **Try game** retries loading without deleting the saved game.
 
 For local packaging with a separately built matching OpenGL ES engine, use
 `tools/build_android_local.py --bob /path/bob.jar --java /path/java --engine /path/libdmengine.so --output /path/output`.

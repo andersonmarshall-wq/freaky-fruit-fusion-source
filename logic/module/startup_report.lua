@@ -1,6 +1,6 @@
 -- Crash reports stay on this device. No telemetry or upload endpoint.
 local M = {stage='Starting', report='', recovery=false}
-local version='0.2.2'
+local version='0.2.3'
 local report_path
 local state_path
 
