@@ -1,0 +1,35 @@
+/.editor_settings
+/.internal
+/build
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+/tests/*-result.txt
+*.keystore
+*.keystore.pass.txt
+manifest.private.der
+manifest.public.der
+
+# Licensed assets are local; see ASSETS.md.
+/art/kawaii/*.svg
+/art/kawaii/expressions/
+/images/ball_*.png
+/Kawaii_Fruit_Preview.png
+/fonts/*.ttf
+/sound/pop.ogg
+/sound/pap.ogg
+/sound/chain.ogg
+/sound/golden.ogg
+/sound/gusher.ogg
+/sound/squelch.ogg
+
+# Download archives, packaged builds, and credentials must stay local.
+*.zip
+*.apk
+*.aab
+*.pem
+*.p12
+*.key
+.env
+.env.*

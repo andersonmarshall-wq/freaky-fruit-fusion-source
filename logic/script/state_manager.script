@@ -1,0 +1,32 @@
+local saver=require('logic.module.saver')
+local balls=require('logic.module.balls')
+local reg=require('logic.module.reg')
+local function save_pile()
+    if reg.check('gameover') then return end
+    local list={}
+    for _,id in ipairs(balls.get()) do
+        if go.exists(id) then list[#list+1]={pos=go.get_position(id),size=go.get(msg.url(nil,id,'ball'),'ball_number')} end
+    end
+    saver.save('balls',list);saver.save('score',reg.check('score') or 0)
+end
+function init(self)
+    local data=saver.load();reg.set('score',data.score or 0)
+    msg.post('/gui','score',{score=data.score or 0})
+    for _,f in ipairs(data.balls or {}) do
+        if f.size and f.size>=1 and f.size<=12 then
+            local name=f.size==12 and 'ball_11f' or 'ball_'..f.size
+            local id=factory.create('/ball_factories#'..name,f.pos,nil,{is_dynamic=true},1);balls.add_ball(id)
+        end
+    end
+    self.elapsed=0
+end
+function update(self,dt)
+    self.elapsed=self.elapsed+dt
+    if self.elapsed>=2 then self.elapsed=0;save_pile() end
+end
+function on_message(self,id,m)
+    if id==hash('gameover') then saver.save('balls',nil);saver.save('score',0)
+    elseif id==hash('update') then self.elapsed=math.max(self.elapsed,1.5)
+    elseif id==hash('replay') then saver.save('balls',nil);saver.save('score',0) end
+end
+function final(self) save_pile();balls.reset() end

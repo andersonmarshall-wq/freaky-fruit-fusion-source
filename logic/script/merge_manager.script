@@ -1,0 +1,147 @@
+local balls=require('logic.module.balls')
+local reg=require('logic.module.reg')
+local saver=require('logic.module.saver')
+local cascade=require('logic.module.cascade')
+local shake=require('logic.module.shake')
+local profiles=require('logic.module.fruit_profiles')
+local words=require('logic.module.word_art')
+local function component(id,name) return msg.url(nil,id,name) end
+local function snapshot()
+    local out={}
+    for _,id in ipairs(balls.get()) do
+        if go.exists(id) then
+            local tier=go.get(component(id,'ball'),'ball_number')
+            out[#out+1]={id=id,tier=tier,pos=go.get_position(id),r=go.get(component(id,'ball'),'body_radius'),
+                velocity=go.get(component(id,'collisionobject'),'linear_velocity')}
+        end
+    end
+    return out
+end
+local function merge(self,a,b)
+    if a==b or not balls.contains(a) or not balls.contains(b) or not go.exists(a) or not go.exists(b) then return end
+    local tier=go.get(component(a,'ball'),'ball_number')
+    if tier>=12 or tier~=go.get(component(b,'ball'),'ball_number') then return end
+    local p=(go.get_position(a)+go.get_position(b))*0.5;p.z=0
+    local velocity=(go.get(component(a,'collisionobject'),'linear_velocity')+go.get(component(b,'collisionobject'),'linear_velocity'))*0.35
+    -- Remove membership before creating anything: duplicate contacts and shake
+    -- messages can never score/deallocate a fruit twice.
+    balls.remove_ball(a);balls.remove_ball(b);go.delete(a);go.delete(b)
+    self.dropped[a],self.dropped[b],self.affection[a],self.affection[b]=nil,nil,nil,nil
+    local next_tier=tier+1
+    local factory_id=next_tier==12 and 'ball_11f' or 'ball_'..next_tier
+    local id=factory.create('/ball_factories#'..factory_id,p,nil,{is_dynamic=true},1)
+    balls.add_ball(id)
+    go.set(component(id,'collisionobject'),'linear_velocity',velocity)
+    local result=cascade.merge(self.cascade,a,b,id,tier)
+    local score=(reg.check('score') or 0)+result.points
+    reg.set('score',score);msg.post('/gui','score',{score=score})
+    if result.celebrate then
+        msg.post('/gui','chain_pop',{text=words.next(),multiplier=result.multiplier,points=result.points,position=p})
+        sound.play('/sounds#chain',{gain=0.30,speed=1+0.07*(result.multiplier-2)})
+    else sound.play('/sounds#pop',{gain=0.50}) end
+    msg.post('/gui','juice_burst',{position=p,tier=next_tier,count=8})
+    if next_tier==12 then
+        msg.post('/gui','golden',{position=p})
+        sound.play('/sounds#golden',{gain=0.40})
+    end
+    if vibrate and (saver.load().vibration or 0)>0 then vibrate.vibrate(10) end
+    msg.post('/state_manager','update')
+end
+local function do_shake(self)
+    if reg.check('gameover') or not reg.check('panel_avaliable') then return end
+    local fruits=snapshot()
+    if #fruits==0 or not shake.consume(self.shake) then return end
+    cascade.start_shake(self.cascade)
+    local popped=0
+    for _,f in ipairs(fruits) do
+        local age=self.cascade.clock-(self.dropped[f.id] or -10)
+        if f.tier<=shake.MAX_TIER and f.pos.y<980 and age>0.85 then
+                balls.remove_ball(f.id);cascade.remove(self.cascade,f.id)
+                self.dropped[f.id],self.affection[f.id]=nil,nil
+                msg.post(f.id,'pop_small');popped=popped+1
+                msg.post('/gui','gusher',{position=f.pos,tier=f.tier,count=10})
+            else
+                -- Upward motion opens room; alternating lateral kicks loosen locks.
+                local direction=(f.pos.x<360) and 1 or -1
+                msg.post(f.id,'jostle',{vx=direction*math.random(200,420),vy=math.random(420,720),spin=math.random(-60,60)/10})
+        end
+    end
+    msg.post('/sounds','fruit_chorus',{count=#fruits})
+    if popped>0 then sound.play('/sounds#gusher',{gain=.5});sound.play('/sounds#squelch',{gain=.25}) end
+    reg.set('shake_grace',2.0)
+    msg.post('/gui','shake_pop',{count=popped})
+    sound.play('/sounds#shake',{gain=0.5})
+    if vibrate and (saver.load().vibration or 0)>0 then vibrate.vibrate(35) end
+    msg.post('/state_manager','update')
+end
+local function blocked(a,b,fruits)
+    local d=b.pos-a.pos;local length2=vmath.length_sqr(d)
+    for _,f in ipairs(fruits) do
+        if f.id~=a.id and f.id~=b.id then
+            local t=vmath.dot(f.pos-a.pos,d)/length2
+            if t>0.08 and t<0.92 and vmath.length_sqr(f.pos-(a.pos+d*t))<(f.r*0.7)^2 then return true end
+        end
+    end
+    return false
+end
+local function reactions(self)
+    if reg.check('smooches')==false then return end
+    if reg.check('gameover') or not reg.check('panel_avaliable') then return end
+    local fruits=snapshot();local now=self.cascade.clock
+    for i,a in ipairs(fruits) do
+        if (self.affection[a.id] or 0)<now and vmath.length_sqr(a.velocity)<6400 then
+            local partner,best=nil,math.huge
+            for j=i+1,#fruits do
+                local b=fruits[j]
+                if a.tier==b.tier and (self.affection[b.id] or 0)<now and vmath.length_sqr(b.velocity)<6400 then
+                    local gap=vmath.length(b.pos-a.pos)-a.r-b.r
+                    if gap>6 and gap<math.min(72,a.r*0.75) and gap<best and not blocked(a,b,fruits) then partner,best=b,gap end
+                end
+            end
+            if partner then
+                self.affection[a.id]=now+math.random(9,16);self.affection[partner.id]=now+math.random(9,16)
+                msg.post(a.id,'smooch',{partner=partner.id});msg.post(partner.id,'smooch',{partner=a.id})
+                msg.post('/gui','hearts',{position=(a.pos+partner.pos)*0.5})
+                if now>self.next_uwu then sound.play('/sounds#uwu',{gain=0.18,speed=math.random(97,108)/100});self.next_uwu=now+4.5 end
+                return -- Limit visual and audio chatter to one pair per scan.
+            end
+        end
+    end
+end
+function init(self)
+    self.cascade=cascade.new();self.shake=shake.new();self.dropped={};self.affection={}
+    self.scan=0;self.hud=0;self.next_uwu=3;self.next_chatter=4;self.last_speaker=nil
+    msg.post('.','acquire_input_focus')
+end
+function update(self,dt)
+    cascade.update(self.cascade,dt);shake.update(self.shake,dt)
+    reg.set('shake_grace',math.max(0,(reg.check('shake_grace') or 0)-dt))
+    if self.cascade.clock>=self.next_chatter and not reg.check('gameover') and reg.check('panel_avaliable') then
+        self.next_chatter=self.cascade.clock+math.random(28,55)/10
+        if reg.check('chatter')~=false then
+            local fruits=snapshot()
+            if #fruits>0 then
+                local index=math.random(1,#fruits);local f=fruits[index]
+                if f.id==self.last_speaker and #fruits>1 then f=fruits[index%#fruits+1] end
+                self.last_speaker=f.id;msg.post(f.id,'talk')
+                sound.play('/sounds#chatter_'..math.random(1,8),{gain=.24,speed=1.14-f.tier*.017})
+            end
+        end
+    end
+    self.scan=self.scan+dt;self.hud=self.hud+dt
+    if self.scan>0.25 then self.scan=0;reactions(self) end
+    if self.hud>0.15 then self.hud=0;msg.post('/gui','shake_ready',{remaining=shake.remaining(self.shake)}) end
+end
+function on_input(self,id,action)
+    if action.acc_x and action.acc_y and action.acc_z then
+        if shake.input(self.shake,action.acc_x,action.acc_y,action.acc_z) then do_shake(self) end
+    elseif id==hash('key_space') and action.pressed then do_shake(self) end
+end
+function on_message(self,id,m)
+    if id==hash('collision_detected') and not reg.check('gameover') then merge(self,m.id,m.other_id)
+    elseif id==hash('dropped') then cascade.drop(self.cascade,m.id);self.dropped[m.id]=self.cascade.clock
+    elseif id==hash('shake') then do_shake(self)
+    elseif id==hash('replay') then
+        self.cascade=cascade.new();self.shake=shake.new();self.dropped={};self.affection={};reg.set('shake_grace',0)
+    end
+end

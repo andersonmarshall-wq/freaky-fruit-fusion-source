@@ -1,0 +1,129 @@
+local balls=require('logic.module.balls')
+local reg=require('logic.module.reg')
+local squish=require('logic.module.squish')
+local profiles=require('logic.module.fruit_profiles')
+go.property('ball_number',1)
+go.property('is_dynamic',true)
+go.property('is_puppet',false)
+go.property('body_radius',40)
+go.property('compression',0)
+go.property('stress',0)
+go.property('pressure',0)
+local BALL,BAG=hash('ball'),hash('bag')
+local function contact(self,m)
+    if not self.is_dynamic or self.is_puppet or self.removing then return end
+    if m.other_group~=BALL and m.other_group~=BAG then return end
+    local n,v=m.normal,m.relative_velocity
+    local inv=m.mass>0 and 1/m.mass or 0
+    local invo=m.other_mass>0 and 1/m.other_mass or 0
+    local speed=math.max(math.abs(v.x*n.x+v.y*n.y),(m.applied_impulse or 0)*(inv+invo)/(1+self.profile.bounce))
+    local load=(m.applied_impulse or 0)*inv/(2200*math.max(self.last_dt,1/120))
+    squish.contact(self.squish,m.other_id,n.x,n.y,speed,load)
+    self.supports[m.other_id]={time=self.squish.time,pos=go.get_position(),
+        other=m.other_position,nx=n.x,ny=n.y}
+end
+local function hold_pressure(self)
+    local v=go.get('#collisionobject','linear_velocity')
+    if vmath.length_sqr(v)>100 then return false end
+    local p=go.get_position();local supported=false
+    for id,c in pairs(self.supports) do
+        if not go.exists(id) then self.supports[id]=nil
+        else
+            local d=p-c.pos;local other=go.get_position(id)-c.other
+            -- A sleeping contact may stop sending impulses. Retain its load only
+            -- while both bodies remain at that contact, never after a deletion.
+            if math.abs(d.x*c.nx+d.y*c.ny)<self.profile.radius*0.08+3
+                and vmath.length_sqr(other)<36 then supported=true
+            elseif self.squish.time-c.time>0.15 then self.supports[id]=nil end
+        end
+    end
+    return supported
+end
+local function reset_face(self)
+    sprite.play_flipbook('#sprite',self.base_animation);self.partner=nil
+end
+function init(self)
+    self.id=go.get_id();self.profile=profiles.get(self.ball_number)
+    self.squish=squish.new(self.profile.softness);self.body_radius=self.profile.radius
+    self.applied_radius=self.body_radius;self.supports={};self.last_dt=1/60
+    self.removing=false;self.face_until=0;self.panic_until=0;self.talk_until=0;self.base_animation=go.get('#sprite','animation')
+    if self.ball_number==12 then
+        go.animate('#glow','tint.w',go.PLAYBACK_LOOP_PINGPONG,.55,go.EASING_INOUTSINE,1.7)
+    end
+    self.base_name=self.ball_number==12 and 'ball_11f' or 'ball_'..self.ball_number
+    if self.is_dynamic then msg.post('#collisionobject','enable')
+    else
+        msg.post('#collisionobject','disable')
+        msg.post('/dropper','sprite_size',{sprite_size=self.profile.radius*2})
+    end
+end
+function on_message(self,id,m,sender)
+    if self.removing then return end
+    if id==hash('contact_point_response') then contact(self,m)
+    elseif id==hash('collision_response') and m.other_group==BALL and self.is_dynamic and not self.is_puppet and self.ball_number<12 then
+        msg.post('/merge_manager','collision_detected',{id=self.id,other_id=m.other_id,ball_number=self.ball_number})
+    elseif id==hash('fall') then self.is_dynamic=true;msg.post('#collisionobject','enable')
+    elseif id==hash('smooch') then
+        self.partner=m.partner;self.face_until=self.squish.time+1.6
+    elseif id==hash('talk') then
+        self.talk_until=self.squish.time+1.2
+    elseif id==hash('pop_small') then
+        sprite.play_flipbook('#sprite',self.base_name..'_panic')
+        local p=go.get_position();go.animate('.', 'position',go.PLAYBACK_ONCE_FORWARD,p+vmath.vector3(0,45,0),go.EASING_OUTQUAD,.22)
+        self.removing=true;msg.post('#collisionobject','disable')
+        sprite.reset_constant('#sprite','squish_shape')
+        go.animate('.', 'scale',go.PLAYBACK_ONCE_FORWARD,1.25,go.EASING_OUTQUAD,0.08,0,function()
+            go.animate('.', 'scale',go.PLAYBACK_ONCE_FORWARD,0,go.EASING_INBACK,0.15,0,function() go.delete() end)
+        end)
+    elseif id==hash('jostle') then
+        self.supports={};self.squish.pressure=0;self.panic_until=self.squish.time+1.5
+        if self.partner then reset_face(self) end
+        physics.wakeup('#collisionobject')
+        local v=go.get('#collisionobject','linear_velocity')
+        v.x=math.max(-600,math.min(600,v.x*0.25+m.vx))
+        v.y=math.max(280,math.min(800,v.y*0.15+m.vy))
+        go.set('#collisionobject','linear_velocity',v)
+        go.set('#collisionobject','angular_velocity',vmath.vector3(0,0,m.spin))
+        squish.impact(self.squish,0,1,450)
+    end
+end
+-- Integrate loads at the same fixed 60 Hz step as Box2D; render-frame
+-- integration underestimates support forces on high-refresh devices.
+function fixed_update(self,dt)
+    if self.removing or not self.is_dynamic or self.is_puppet then return end
+    self.last_dt=dt
+    squish.update(self.squish,dt,hold_pressure(self));self.compression=self.squish.amount
+    self.pressure=self.squish.pressure
+    self.stress=math.max(0,math.min(1,(self.pressure-2.5)/10))
+    self.body_radius=self.profile.radius*self.squish.body_scale
+    if math.abs(self.body_radius-self.applied_radius)>0.10 then
+        physics.set_shape('#collisionobject','fruit',{type=physics.SHAPE_TYPE_SPHERE,diameter=self.body_radius*2})
+        physics.wakeup('#collisionobject');self.applied_radius=self.body_radius
+    end
+    local animation=self.base_animation
+    if self.squish.time<self.panic_until then animation=hash(self.base_name..'_panic')
+    elseif self.stress>0.65 then animation=hash(self.base_name..'_stress_heavy')
+    elseif self.stress>0.22 then animation=hash(self.base_name..'_stress')
+    elseif self.partner and go.exists(self.partner) and self.squish.time<self.face_until then
+        local d=vmath.rotate(vmath.conj(go.get_rotation()),go.get_position(self.partner)-go.get_position())
+        local face
+        if math.abs(d.x)>math.abs(d.y) then face=d.x<0 and 'left' or 'right'
+        else face=d.y<0 and 'down' or 'up' end
+        animation=hash(self.base_name..'_kiss_'..face)
+    elseif self.squish.time<self.talk_until and math.floor(self.squish.time*10)%2==0 then animation=hash(self.base_name..'_talk')
+    end
+    if go.get('#sprite','animation')~=animation then sprite.play_flipbook('#sprite',animation) end
+
+end
+function late_update(self,dt)
+    if self.removing or not self.is_dynamic or self.is_puppet then return end
+    local s=self.squish
+    if s.amount==0 and s.rest==0 then
+        if self.squish_active then sprite.reset_constant('#sprite','squish_center');sprite.reset_constant('#sprite','squish_shape');self.squish_active=false end
+        return
+    end
+    self.squish_active=true
+    local p=go.get_position();local scale=go.get_scale().x
+    go.set('#sprite','squish_center',vmath.vector4(p.x,p.y,self.profile.radius*scale,0))
+    go.set('#sprite','squish_shape',vmath.vector4(s.nx,s.ny,s.amount,1-s.body_scale))
+end

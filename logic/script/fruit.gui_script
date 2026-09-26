@@ -1,0 +1,236 @@
+local reg=require('logic.module.reg')
+local saver=require('logic.module.saver')
+local C={ink=vmath.vector4(.40,.26,.22,1),cream=vmath.vector4(1,.97,.90,1),pink=vmath.vector4(.93,.43,.57,1),
+    mint=vmath.vector4(.61,.78,.54,1),gold=vmath.vector4(1,.81,.35,1),lavender=vmath.vector4(.70,.57,.86,1)}
+local function text(value,x,y,scale,color,layer)
+    local n=gui.new_text_node(vmath.vector3(x,y,0),value)
+    gui.set_font(n,'bubble');gui.set_scale(n,vmath.vector3(scale,scale,1));gui.set_color(n,color or C.ink)
+    gui.set_outline(n,C.cream);gui.set_layer(n,layer or 'hud');return n
+end
+local function image_node(animation,x,y,w,h,layer)
+    local n=gui.new_box_node(vmath.vector3(x,y,0),vmath.vector3(w,h,0))
+    gui.set_texture(n,'main');gui.play_flipbook(n,animation);gui.set_layer(n,layer or 'effects');return n
+end
+local function pill(label,x,y,w,h,layer)
+    local n=image_node('pill',x,y,w,h,layer or 'hud')
+    gui.set_slice9(n,vmath.vector4(25,25,25,25))
+    local t=text(label,x,y,.40,C.ink,layer or 'hud');return {box=n,text=t}
+end
+local function enabled(button,value)
+    gui.set_enabled(button.box,value);gui.set_enabled(button.text,value)
+end
+local function fade_delete(n,delay,duration)
+    gui.animate(n,'color.w',0,gui.EASING_INQUAD,duration,delay,function() gui.delete_node(n) end)
+end
+local function free_slots(self,count)
+    -- Bounded effects avoid overflowing GUI nodes during a huge shake/cascade.
+    if self.effect_count+count>180 then return false end
+    self.effect_count=self.effect_count+count
+    timer.delay(2.8,false,function() self.effect_count=math.max(0,self.effect_count-count) end)
+    return true
+end
+local function burst(self,position,count,tier)
+    count=math.min(count or 8,10)
+    if not free_slots(self,count) then return end
+    for i=1,count do
+        local angle=2*math.pi*i/count+math.random()*.25
+        local distance=math.random(35,95)
+        local n=image_node(i%3==0 and 'sparkle' or 'heart',position.x,position.y,math.random(13,24),math.random(13,24))
+        gui.set_rotation(n,vmath.vector3(0,0,math.random(-35,35)))
+        local target=position+vmath.vector3(math.cos(angle)*distance,math.sin(angle)*distance+20,0)
+        gui.animate(n,'position',target,gui.EASING_OUTQUAD,.55)
+        fade_delete(n,.28,.36)
+    end
+end
+local function gusher(self,m)
+    local count=math.min(m.count or 10,12)
+    if not free_slots(self,count) then return end
+    local colors={vmath.vector4(1,.28,.38,1),vmath.vector4(.49,.43,1,1),vmath.vector4(1,.82,.2,1)}
+    for i=1,count do
+        local angle=2*math.pi*i/count
+        local n=image_node('droplet',m.position.x,m.position.y,math.random(12,23),math.random(18,34))
+        gui.set_color(n,colors[m.tier] or C.pink)
+        gui.set_rotation(n,vmath.vector3(0,0,90+angle*180/math.pi))
+        local dx=math.cos(angle)*math.random(55,120);local dy=math.sin(angle)*math.random(35,70)+50
+        gui.animate(n,'position.x',m.position.x+dx,gui.EASING_OUTQUAD,.68)
+        gui.animate(n,'position.y',m.position.y+dy,gui.EASING_OUTQUAD,.22,0,function()
+            gui.animate(n,'position.y',m.position.y-95,gui.EASING_INQUAD,.5)
+        end)
+        fade_delete(n,.39,.35)
+    end
+end
+local function word_popup(self,m)
+    if not free_slots(self,3) then return end
+    self.pop_serial=self.pop_serial+1
+    local p=m.position or vmath.vector3(360,800,0)
+    local y=math.max(420,math.min(1030,p.y+110))+(self.pop_serial%2)*38
+    local scale=math.min(.85,19/math.max(1,#m.text))
+    local shadow=text(m.text,362,y-3,scale,C.ink,'effects');gui.set_outline(shadow,C.ink)
+    local title=text(m.text,360,y,scale,C.cream,'effects');gui.set_outline(title,C.pink)
+    gui.set_rotation(title,vmath.vector3(0,0,self.pop_serial%2==0 and -5 or 5))
+    gui.set_rotation(shadow,gui.get_rotation(title))
+    local detail=text(m.multiplier and ('x'..m.multiplier..' CHAIN  +'..m.points) or (m.detail or ''),360,y-45,.37,C.ink,'effects')
+    for _,n in ipairs({shadow,title,detail}) do
+        local s=gui.get_scale(n);gui.set_scale(n,s*.68)
+        gui.animate(n,'scale',s,gui.EASING_OUTBACK,.25)
+        gui.animate(n,'position.y',gui.get_position(n).y+58,gui.EASING_OUTSINE,1.5)
+        fade_delete(n,1.10,.40)
+    end
+end
+local function audio_labels(self)
+    local d=saver.load()
+    gui.set_text(self.music.text,'Music: '..(d.music==false and 'off' or 'on'))
+    gui.set_text(self.sfx.text,'Sounds: '..(d.sfx==false and 'off' or 'on'))
+    gui.set_text(self.volume.text,'Music level: '..math.floor((d.music_volume or .8)*100)..'%')
+    gui.set_text(self.smooch.text,'Smooches: '..(d.smooches==false and 'off' or 'on'))
+    gui.set_text(self.chatter.text,'Elf chatter: '..(d.chatter==false and 'off' or 'on'))
+end
+local function settings_panel(self,show)
+    self.settings_open=show;reg.set('panel_avaliable',not show and not reg.check('gameover'))
+    for _,n in ipairs(self.modal_nodes) do gui.set_enabled(n,show) end
+    for _,b in ipairs(self.modal_buttons) do enabled(b,show) end
+    for _,n in ipairs(self.credit_nodes) do gui.set_enabled(n,false) end
+    for _,b in ipairs(self.credit_links) do enabled(b,false) end
+    self.credits_open=false
+    gui.set_text(self.modal_nodes[3],'SET THE MOOD');gui.set_text(self.close.text,'Back to fruit')
+    if show then audio_labels(self) end
+end
+local function credits_panel(self)
+    self.credits_open=true
+    for _,b in ipairs(self.modal_buttons) do enabled(b,false) end
+    for _,n in ipairs(self.credit_nodes) do gui.set_enabled(n,true) end
+    for _,b in ipairs(self.credit_links) do enabled(b,true) end
+    gui.set_text(self.modal_nodes[3],'MADE WITH LOVE')
+    enabled(self.close,true);gui.set_text(self.close.text,'Back to settings')
+end
+function init(self)
+    msg.post('.','acquire_input_focus')
+    timer.delay(0,false,function() msg.post('.','acquire_input_focus') end)
+    reg.set('gameover',false);reg.set('panel_avaliable',true);reg.set('dropper_active',true)
+    self.effect_count=0;self.pop_serial=0;self.remaining=0;self.hold=0;self.shake_held=false
+    text('FREAKY FRUIT',360,1410,.48,C.ink)
+    text('FUSION',360,1367,.72,C.pink)
+    text('SCORE',155,1303,.32,C.ink);self.score=text('0',155,1255,.78,C.ink)
+    text('BEST',365,1303,.32,C.ink);self.best=text(tostring(saver.load().highscore or 0),365,1255,.66,C.ink)
+    text('NEXT',595,1310,.32,C.ink)
+    self.settings=pill('...',665,1406,72,60)
+    text('Drop it. Squeeze it. Get juicy.',360,153,.30,C.ink)
+    self.shake=pill('SHAKE IT UP!',360,94,360,76)
+    self.shake_hint=text('Shake your phone, hold this button, or press SPACE',360,37,.27,C.ink)
+    self.cooldown=text('Pops cherries, blueberries & passion fruit',360,193,.28,C.ink)
+    -- Modal nodes are separate from the playfield, with input consumed while open.
+    local shade=gui.new_box_node(vmath.vector3(360,720,0),vmath.vector3(720,1440,0))
+    gui.set_color(shade,vmath.vector4(.25,.16,.16,.68));gui.set_layer(shade,'overlay')
+    local panel=image_node('pill',360,790,590,790,'overlay');gui.set_slice9(panel,vmath.vector4(25,25,25,25))
+    self.modal_nodes={shade,panel,text('SET THE MOOD',360,1115,.67,C.pink,'overlay')}
+    self.music=pill('Music',360,1010,430,72,'overlay');self.volume=pill('Music level',360,914,430,72,'overlay')
+    self.sfx=pill('Sounds',360,818,430,72,'overlay');self.smooch=pill('Smooches',360,722,430,72,'overlay')
+    self.chatter=pill('Elf chatter',360,626,430,72,'overlay')
+    self.close=pill('Back to fruit',360,500,430,72,'overlay')
+    self.credits=pill('Credits & creators',360,420,430,54,'overlay')
+    self.modal_buttons={self.music,self.volume,self.sfx,self.smooch,self.chatter,self.close,self.credits}
+    self.credit_nodes={text('Fruit artwork (adapted)',360,1060,.30,C.ink,'overlay'),
+        text('Music: blossom + regrowth wip',360,936,.30,C.ink,'overlay'),
+        text('Edited tempo, tone & volume; CC BY 4.0',360,832,.25,C.ink,'overlay'),
+        text('Tiny Pops & Sparkles sound effects',360,796,.28,C.ink,'overlay'),
+        text('Based on Wateru by AsetSiya (MIT)',360,559,.27,C.ink,'overlay'),
+        text('Freaky Fruit Fusion 0.2.2',360,423,.25,C.ink,'overlay')}
+    self.credit_links={pill('RDBI - Kawaii Fruits',360,1010,460,68,'overlay'),
+        pill('chajamakesmusic',360,885,460,68,'overlay'),
+        pill('Candle Light',360,744,460,68,'overlay'),
+        pill('Music license: CC BY 4.0',360,631,460,62,'overlay')}
+    self.credit_urls={'https://rdbi.itch.io/kawaii-fruits',
+        'https://chajamakesmusic.itch.io/cute-and-silly-rpg-music-pack',
+        'https://candlelightgame.itch.io/tiny-pops-sparkles-80-free-game-sfx',
+        'https://creativecommons.org/licenses/by/4.0/'}
+    self.gameover_nodes={text('FRUIT OVERFLOW!',360,1080,.82,C.pink,'overlay'),text("Couldn't keep it in? One more squeeze?",360,1030,.36,C.ink,'overlay')}
+    self.replay=pill('ONE MORE SQUEEZE',360,938,460,82,'overlay')
+    for _,n in ipairs(self.gameover_nodes) do gui.set_enabled(n,false) end;enabled(self.replay,false)
+    settings_panel(self,false)
+    reg.set('smooches',saver.load().smooches~=false);reg.set('chatter',saver.load().chatter~=false)
+    msg.post('bootstrap:/go#bootstrap','game_ready')
+end
+function update(self,dt)
+    if self.shake_held then
+        self.hold=self.hold+dt
+        if self.hold>=.45 then self.shake_held=false;msg.post('/merge_manager','shake') end
+    end
+end
+function on_message(self,id,m)
+    if id==hash('score') then
+        gui.set_text(self.score,tostring(m.score));reg.set('score',m.score)
+        if m.score>(saver.load().highscore or 0) then saver.save('highscore',m.score);gui.set_text(self.best,tostring(m.score)) end
+    elseif id==hash('chain_pop') then word_popup(self,m)
+    elseif id==hash('gusher') then gusher(self,m)
+    elseif id==hash('juice_burst') then burst(self,m.position,m.count,m.tier)
+    elseif id==hash('golden') then word_popup(self,{text='BIG MELON ENERGY!',detail='You made the golden watermelon!',position=vmath.vector3(360,800,0)})
+    elseif id==hash('hearts') then
+        if free_slots(self,3) then
+            for i=1,3 do
+                local n=image_node('heart',m.position.x+(i-2)*24,m.position.y+12,28,28)
+                gui.animate(n,'position.y',m.position.y+85+i*16,gui.EASING_OUTSINE,1.4)
+                fade_delete(n,.80,.55)
+            end
+        end
+    elseif id==hash('shake_pop') then word_popup(self,{text='JUICE ALL OVER!',detail=m.count..' tiny fruits popped!',position=vmath.vector3(360,740,0)})
+    elseif id==hash('shake_ready') then
+        self.remaining=m.remaining
+        gui.set_text(self.shake.text,m.remaining>0 and ('RECHARGING  '..math.ceil(m.remaining)..'s') or 'SHAKE IT UP!')
+        gui.set_color(self.shake.box,m.remaining>0 and vmath.vector4(.82,.80,.75,1) or vmath.vector4(1,1,1,1))
+    elseif id==hash('gameover') then
+        reg.set('panel_avaliable',false)
+        for _,n in ipairs(self.gameover_nodes) do gui.set_enabled(n,true) end;enabled(self.replay,true)
+    end
+end
+local function picked(button,a) return a.x and gui.pick_node(button.box,a.x,a.y) end
+function on_input(self,id,a)
+    if id~=hash('touch') then return false end
+    if self.settings_open then
+        if self.credits_open then
+            if a.released then
+                if picked(self.close,a) then settings_panel(self,true)
+                else
+                    for i,b in ipairs(self.credit_links) do
+                        if picked(b,a) then sys.open_url(self.credit_urls[i]);break end
+                    end
+                end
+            end
+            return true
+        end
+        if a.released then
+            if picked(self.close,a) then settings_panel(self,false)
+            elseif picked(self.credits,a) then credits_panel(self)
+            elseif picked(self.music,a) then saver.save('music',saver.load().music==false)
+            elseif picked(self.sfx,a) then saver.save('sfx',saver.load().sfx==false)
+            elseif picked(self.volume,a) then
+                local v=saver.load().music_volume or .8;saver.save('music_volume',v>=.99 and .2 or math.min(1,v+.2))
+            elseif picked(self.chatter,a) then
+                saver.save('chatter',saver.load().chatter==false);reg.set('chatter',saver.load().chatter~=false)
+            elseif picked(self.smooch,a) then
+                saver.save('smooches',saver.load().smooches==false);reg.set('smooches',saver.load().smooches~=false)
+            end
+            audio_labels(self);msg.post('/sounds','audio_settings')
+        end
+        return true
+    end
+    if reg.check('gameover') then
+        if a.released and picked(self.replay,a) then
+            for _,n in ipairs(self.gameover_nodes) do gui.set_enabled(n,false) end;enabled(self.replay,false)
+            msg.post('/dropper','replay');msg.post('/state_manager','replay');reg.set('panel_avaliable',true)
+            reg.set('score',0);gui.set_text(self.score,'0')
+        end
+        return true
+    end
+    if picked(self.settings,a) then
+        if a.released then settings_panel(self,true) end
+        return true
+    end
+    if picked(self.shake,a) or self.shake_held then
+        if a.pressed and self.remaining<=0 then self.shake_held=true;self.hold=0 end
+        if a.released or not picked(self.shake,a) then self.shake_held=false end
+        return true
+    end
+    -- Footer and header touches are UI, not fruit drops.
+    if a.y and (a.y<220 or a.y>1320) then return true end
+    return false
+end

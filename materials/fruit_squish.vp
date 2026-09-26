@@ -1,0 +1,29 @@
+#version 140
+
+// Defold supplies sprite vertices in world space, including fruit rotation.
+in highp vec4 position;
+in mediump vec2 texcoord0;
+out mediump vec2 var_texcoord0;
+
+uniform vs_uniforms
+{
+    highp mat4 view_proj;
+    highp vec4 squish_center; // center.xy, visual radius, unused
+    highp vec4 squish_shape;  // world normal.xy, log strain, collider compression
+};
+
+void main()
+{
+    vec2 normal = squish_shape.xy;
+    vec2 tangent = vec2(-normal.y, normal.x);
+    float normal_scale = exp(-squish_shape.z);
+    float tangent_scale = exp(squish_shape.z);
+    vec2 relative = position.xy - squish_center.xy;
+    // With zero strain, use the original vertex exactly (also safe before init).
+    vec2 delta = normal * dot(relative, normal) * (normal_scale - 1.0)
+               + tangent * dot(relative, tangent) * (tangent_scale - 1.0);
+    // Keep the impact-facing edge against the contacting fruit/floor.
+    delta -= normal * squish_center.z * (1.0 - squish_shape.w - normal_scale);
+    gl_Position = view_proj * vec4(position.xy + delta, position.z, 1.0);
+    var_texcoord0 = texcoord0;
+}

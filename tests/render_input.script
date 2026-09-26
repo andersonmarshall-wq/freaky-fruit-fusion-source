@@ -1,0 +1,16 @@
+-- Used only by the isolated graphics/input smoke test.
+local balls=require('logic.module.balls')
+function init(self) self.time=0;self.checked=false end
+function update(self,dt)
+    self.time=self.time+dt
+    if self.time>4 and not self.checked then
+        self.checked=true
+        local pile=balls.get()
+        local ok=#pile==1 and go.exists(pile[1])
+        local x=ok and go.get_position(pile[1]).x or -1
+        ok=ok and x>510 and x<570
+        print(string.format('RENDER_INPUT_%s: count=%d x=%.2f',ok and 'PASS' or 'FAIL',#pile,x))
+        if not ok then msg.post('@system:','exit',{code=1}) end
+    end
+    if self.time>9 then msg.post('@system:','exit',{code=0}) end
+end

@@ -1,0 +1,19 @@
+# Keep the Android prototype on OpenGL ES while validating the reported blank screen.
+# Explicit settings match Defold 1.13.1's Graphics (Android): OpenGL choice.
+platforms:
+  arm64-android:
+    context:
+      libs: [graphics_opengles, dmglfw]
+      excludeLibs: [graphics_vulkan, dmglfw_vulkan]
+      symbols: [GraphicsAdapterOpenGLES]
+      excludeSymbols: [GraphicsAdapterVulkan]
+      dynamicLibs: [EGL, GLESv1_CM, GLESv2]
+      excludeDynamicLibs: [vulkan]
+  armv7-android:
+    context:
+      libs: [graphics_opengles, dmglfw]
+      excludeLibs: [graphics_vulkan, dmglfw_vulkan]
+      symbols: [GraphicsAdapterOpenGLES]
+      excludeSymbols: [GraphicsAdapterVulkan]
+      dynamicLibs: [EGL, GLESv1_CM, GLESv2]
+      excludeDynamicLibs: [vulkan]

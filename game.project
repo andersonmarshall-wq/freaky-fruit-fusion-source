@@ -1,0 +1,68 @@
+[bootstrap]
+main_collection = /main/bootstrap.collectionc
+render = /orthographic/render/orthographic.renderc
+
+[script]
+shared_state = 1
+
+[display]
+width = 720
+height = 1440
+high_dpi = 1
+
+[android]
+manifest = /main/AndroidManifest.xml
+version_code = 3
+app_icon_36x36 = /art/app-icon/icon-36.png
+app_icon_48x48 = /art/app-icon/icon-48.png
+app_icon_72x72 = /art/app-icon/icon-72.png
+app_icon_96x96 = /art/app-icon/icon-96.png
+app_icon_144x144 = /art/app-icon/icon-144.png
+app_icon_192x192 = /art/app-icon/icon-192.png
+input_method = HiddenInputField
+package = com.freakyfruit.fusion
+immersive_mode = 1
+
+[html5]
+scale_mode = stretch
+
+[project]
+title = Freaky Fruit Fusion
+version = 0.2.2
+developer = asetsiya
+write_log = 1
+custom_resources = /credits
+bundle_resources = /bundle
+dependencies#0 = https://github.com/britzl/defold-orthographic/archive/refs/tags/3.6.3.zip
+
+[physics]
+gravity_y = -2200.0
+scale = 0.01
+max_collisions = 512
+max_collision_object_count = 512
+max_contacts = 512
+max_fixed_timesteps = 4
+velocity_threshold = 500.0
+
+[particle_fx]
+max_count = 128
+max_emitter_count = 128
+
+[render]
+clear_color_red = 1.0
+clear_color_green = 0.95
+clear_color_blue = 0.88
+
+[graphics]
+opengl_version_hint = 33
+
+[input]
+use_accelerometer = 1
+game_binding = /input/all.input_bindingc
+gamepads = /builtins/input/default.gamepadsc
+
+[engine]
+fixed_update_frequency = 60
+
+[native_extension]
+app_manifest = /main/android-compat.appmanifest

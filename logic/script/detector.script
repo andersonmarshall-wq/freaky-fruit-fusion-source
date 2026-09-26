@@ -1,0 +1,22 @@
+local balls=require('logic.module.balls')
+local reg=require('logic.module.reg')
+function init(self) self.danger=0 end
+function update(self,dt)
+    if reg.check('gameover') then return end
+    if (reg.check('shake_grace') or 0)>0 then self.danger=0;return end
+    local crowded=false
+    for _,id in ipairs(balls.get()) do
+        if go.exists(id) then
+            local p=go.get_position(id)
+            local r=go.get(msg.url(nil,id,'ball'),'body_radius')
+            local v=go.get(msg.url(nil,id,'collisionobject'),'linear_velocity')
+            if p.y+r>987 and math.abs(v.y)<110 then crowded=true;break end
+        end
+    end
+    self.danger=crowded and self.danger+dt or math.max(0,self.danger-dt*3)
+    if self.danger>=1.8 then
+        reg.set('gameover',true);sound.play('/sounds#gameover',{gain=0.30})
+        msg.post('/gui','gameover');msg.post('/dropper','gameover');msg.post('/state_manager','gameover')
+        self.danger=0
+    end
+end

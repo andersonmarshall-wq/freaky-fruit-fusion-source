@@ -1,0 +1,51 @@
+# Sources and credits
+
+- Base game: **asetsiya / Wateru**, https://github.com/asetsiya/wateru — MIT license retained in `LICENSE`.
+- Engine: **Defold**, https://defold.com. Camera dependency: **britzl / defold-orthographic 3.6.3**, https://github.com/britzl/defold-orthographic.
+- Fruit artwork: **RDBI / Kawaii Fruits**, https://rdbi.itch.io/kawaii-fruits — supplied by Marshall after purchase. Honeydew, cantaloupe, whole golden watermelon, and expression variants adapt these vectors.
+- Music: **chajamakesmusic / cute & silly rpg music pack**, https://chajamakesmusic.itch.io/cute-and-silly-rpg-music-pack — **CC BY 4.0**, https://creativecommons.org/licenses/by/4.0/. Supplied archive: `poopie pack.zip`. Selected tracks: `blossom.wav` and `regrowth wip.wav`. Adaptations: slower tempo, low-pass filtering, volume normalization, OGG conversion, and in-game crossfades. No creator endorsement is implied.
+- Soft effects: **Candle Light / Tiny Pops & Sparkles — 80 Free Game SFX**, https://candlelightgame.itch.io/tiny-pops-sparkles-80-free-game-sfx — the creator permits personal and commercial game use. Game-ready conversions use the selections below.
+- Font: **Niskala Huruf / Mouldy Cheese**, https://www.fontspace.com/mouldy-cheese-font-f95405 — the author permits commercial projects. Obtain the TTF locally; it is not mirrored in the public source repository.
+- Launcher icon: generated with OpenAI Image Generation for this project, then exported at Android launcher sizes; see `art/app-icon/PROMPT.md`.
+- Elf gibberish and startled squeals: synthetic Flite `slt` utterances, pitch/tempo/loudness processed with FFmpeg; no human voice imitation. Uwu, shake, and game-over cues are original synthesized tones.
+
+| Game sound | Supplied source |
+| --- | --- |
+| Merge pop | `01_Soft_Bubble_Pop_v2.wav` |
+| Drop tap | `04_Jelly_Blob_Tap_v1.wav` |
+| Chain sparkle | `14_Star_Twinkle_v1.wav` |
+| Golden celebration | `11_Magical_Sparkle_v2.wav` |
+| Gusher pop | `08_Water_Droplet_Pop_v3.wav` |
+| Squishy burst | `10_Marshmallow_Squish_v2.wav` |
+
+Purchased assets keep their own terms and are not relicensed by the upstream game's MIT license.
+The fruit pack permits editing and commercial/non-commercial game use but prohibits redistribution of the asset files. Credit is appreciated but does not replace that restriction. Its raw and adapted fruit assets must not be exposed in a public source repository without the creator's permission.
+
+The music's CC BY 4.0 license permits redistribution with attribution, the license link, and identification of changes. The sound pack's page permits game use but does not explicitly grant standalone asset redistribution. This public source release omits restricted fruit files and the six pack effects, including from its history, and links to the original download pages. See `ASSETS.md` for local setup. These terms were checked on 2026-09-26.
+
+Creator links are available in the game's settings under **Credits & creators**. The bundled `credits/NOTICE.txt` preserves the upstream MIT notice and asset attribution.
+
+
+--- Wateru MIT license ---
+
+MIT License
+
+Copyright (c) 2025 AsetSiya
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

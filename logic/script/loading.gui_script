@@ -1,0 +1,86 @@
+local report=require('logic.module.startup_report')
+local INK=vmath.vector4(.30,.20,.16,1)
+local function label(value,x,y,scale,font)
+    local node=gui.new_text_node(vmath.vector3(x,y,0),value)
+    gui.set_font(node,font or 'bubble');gui.set_scale(node,vmath.vector3(scale,scale,1))
+    gui.set_color(node,INK);gui.set_outline(node,vmath.vector4(0,0,0,0))
+    gui.set_shadow(node,vmath.vector4(0,0,0,0))
+    return node
+end
+local function button(value,x,y,w)
+    local box=gui.new_box_node(vmath.vector3(x,y,0),vmath.vector3(w,80,0))
+    gui.set_color(box,vmath.vector4(1,.78,.65,1))
+    return {box=box,text=label(value,x,y,.38)}
+end
+local function enabled(button,value)
+    gui.set_enabled(button.box,value);gui.set_enabled(button.text,value)
+end
+local function show(self)
+    local viewing=self.page~=nil
+    gui.set_enabled(self.detail,viewing)
+    gui.set_enabled(self.title,not viewing)
+    gui.set_enabled(self.status,not viewing)
+    gui.set_enabled(self.hint,not viewing)
+    enabled(self.previous,viewing);enabled(self.next,viewing)
+    enabled(self.play,not self.loading)
+    enabled(self.details,not self.loading or self.elapsed>10)
+    gui.set_text(self.details.text,viewing and 'Back' or 'Crash details')
+    if viewing then
+        self.pages=report.pages()
+        self.page=math.max(1,math.min(self.page,#self.pages))
+        gui.set_text(self.detail,'CRASH DETAILS '..self.page..' / '..#self.pages..'\n\n'..self.pages[self.page])
+    elseif report.recovery then
+        gui.set_text(self.status,'The last launch stopped unexpectedly.')
+        gui.set_scale(self.status,vmath.vector3(.33,.33,1))
+        gui.set_text(self.hint,'Open Crash details and take a screenshot.\nThen tap Try game to retry.')
+    else
+        gui.set_text(self.status,'Getting juicy...')
+        gui.set_text(self.hint,report.stage)
+    end
+end
+function init(self)
+    msg.post('.','acquire_input_focus')
+    self.elapsed=0;self.loading=false;self.page=nil
+    self.title=label('FREAKY FRUIT FUSION',360,880,.60)
+    self.status=label('Getting juicy...',360,780,.46)
+    self.hint=label('',360,665,1.2,'plain')
+    label('0.2.2',360,220,.30)
+    self.play=button('Try game',360,460,460)
+    self.details=button('Crash details',360,350,460)
+    self.previous=button('Previous',195,1330,280)
+    self.next=button('Next',525,1330,280)
+    self.detail=label('',45,1240,1.1,'plain')
+    gui.set_pivot(self.detail,gui.PIVOT_NW)
+    show(self)
+end
+function update(self,dt)
+    self.elapsed=self.elapsed+dt
+    if self.loading and not self.page then
+        gui.set_text(self.hint,report.stage)
+        if self.elapsed>12 then
+            gui.set_text(self.status,'Still loading...')
+            enabled(self.details,true)
+        end
+    end
+end
+function on_message(self,id)
+    if id==hash('startup_loading') then
+        self.loading=true;self.elapsed=0;self.page=nil;report.recovery=false;show(self)
+    elseif id==hash('startup_failed') then
+        self.loading=false;self.page=1;show(self)
+    end
+end
+function on_input(self,id,action)
+    if id~=hash('touch') or not action.released then return false end
+    local function hit(button)
+        return gui.is_enabled(button.box) and gui.pick_node(button.box,action.x,action.y)
+    end
+    if hit(self.details) then
+        if self.page then self.page=nil else self.page=1 end
+        show(self);return true
+    end
+    if hit(self.previous) then self.page=math.max(1,self.page-1);show(self);return true end
+    if hit(self.next) then self.page=math.min(#self.pages,self.page+1);show(self);return true end
+    if hit(self.play) then msg.post('#bootstrap','startup_retry');return true end
+    return false
+end

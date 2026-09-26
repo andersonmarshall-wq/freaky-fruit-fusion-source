@@ -1,0 +1,1131 @@
+{
+  "format": 1,
+  "description": "Local asset files omitted from public source. Restore from your own licensed complete build or regenerate from creator packs.",
+  "files": [
+    {
+      "path": "Kawaii_Fruit_Preview.png",
+      "sha256": "ffcfca3ea48e454d0e121775e58249207effd26cb36d5306890a91c4c0f5712a",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Blueberry.svg",
+      "sha256": "b9ead55f5a40466097b67d16e88088c90a4ea2ba4ba28eb935808c6b6bee2495",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Cantaloupe.svg",
+      "sha256": "eba5761995dc029beff0482c80528da5104884788c97da742eda29c631a252c2",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Cherry.svg",
+      "sha256": "11a5000d12791bd819d0f584fc6025a4171ad86aab39d525b0fdc567f90bf2ad",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Coconut.svg",
+      "sha256": "03880500ebe63ec2d31edf874a66f2eb2c3e1fdeee251f7aa8ec116af53d056c",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/GoldenWatermelon.svg",
+      "sha256": "8e3af626a0b90a40ccaa177014be406a1347e05c5a76dacfef3b7bf3099e8837",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Honeydew.svg",
+      "sha256": "1357b723e4cf30ca8d806dc82f94763130fac3e4d19d531aa7fcb4e8563ab84b",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Kiwi.svg",
+      "sha256": "693c535abc687ac1e66ec139f4ebb2fa8f7552a475548b14a024c776be6a8333",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Orange.svg",
+      "sha256": "cab0b362a9918f26c31190072cbac04aead16b59c9077ee6eeedc5de874cb4a0",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/PassionFruit.svg",
+      "sha256": "5a18fe13c2d768fa1f11e91aa613e03a95f182055a895c4c3daf4128a4596739",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Peach.svg",
+      "sha256": "fa7f7586c171ab2bb677f5971bc62b51098994294e05a96a3ca46b0dee600c60",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/Pineapple.svg",
+      "sha256": "3e04977e59403527b0cfef2754ad01115352921acc9d3c83aff71e364783fab8",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/WatermelonFull.svg",
+      "sha256": "4dbd38715fd82a5b1c9a8dc744c84ce935331c86ac4ff2617337f8bf5d41c180",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/WatermelonHalf.svg",
+      "sha256": "a922e92eccf7975f1ae74b4e7ccc66f7db8c25d290984d3249e7dd1ad04e6d50",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_kiss_down.svg",
+      "sha256": "4a3b6c40fa39d70eb2e6a09408de997c2768a331ed80052154f1e62f6df413de",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_kiss_left.svg",
+      "sha256": "e6ce75cbaa151ef349a7aed42f39215419ac8826a7efd997b0e4b076d5415beb",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_kiss_right.svg",
+      "sha256": "c223f433d17ef8a213e32bcee394177e909297bca2d90ec9aa997e7512db6351",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_kiss_up.svg",
+      "sha256": "55d76e49dfbf42dbd66a4e9d7dca5f5e405d67d4f7ab0cad6548e03190fb18ec",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_panic.svg",
+      "sha256": "670bebfa87e0012a0054ba4c169eea3ff8b21cd685d47cb25c929c6df27c2f4e",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_stress.svg",
+      "sha256": "557609b0f96cef8a18acaac63dfbde8f58b306582e2d187d77e5a64771ac4fa9",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_stress_heavy.svg",
+      "sha256": "ef2c2d345bd285305dd262e06d7ad72fd975dbc2ca3d8dc380c318222524ef04",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_10_talk.svg",
+      "sha256": "deb029a372d3a27dce8b4d5cc340cf7d9e7fe5803b54d5ff6279073c36f49dfe",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_kiss_down.svg",
+      "sha256": "58d040d3c7f94e076b79d86c56d225631d20040a078a5b12e915b75ed6c0ff80",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_kiss_left.svg",
+      "sha256": "d622d87f0c041ba7884a54a1589c0855d7decbb820384ec74e563944ff49da0e",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_kiss_right.svg",
+      "sha256": "08e5c1e7195189a3e672bea73e6634659469ce6ae1dec6778347d57c38980f55",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_kiss_up.svg",
+      "sha256": "7f9099fbe8cc4207feb42d65d98d5f51941778bb8dab0d8e129c21e2d6c776f5",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_panic.svg",
+      "sha256": "a847c97b25b6fcf85078bfc69de252d92989660cbe1e96df79b3d3a434c85b6d",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_stress.svg",
+      "sha256": "8ae8b8b8a8953e91b914b0bebc795aa07701fa8abd555018349d88c91aa19d3f",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_stress_heavy.svg",
+      "sha256": "41b9199264e53fcfdb7793b692dadfe5e225d1d93aa0e34d78105775a3e7b8c0",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11_talk.svg",
+      "sha256": "a3e2593e8919d88e5bce4b44dadc08c5c719a4bec8055c1a0744732b7219a4ed",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_kiss_down.svg",
+      "sha256": "f1c2dd360082296fa9b45387f3208855e393326210b6671901a2524dc2b62665",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_kiss_left.svg",
+      "sha256": "7d67a99c456838d6c35e3907c6248846cf71b3de816befb518ee7bc52a7c3c22",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_kiss_right.svg",
+      "sha256": "892c687fd25759d315d0af110dea59e8f6f79a66b9100848e6e9318233668214",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_kiss_up.svg",
+      "sha256": "6533002be57fd9c11a8f3e5f48a8079602db1151c8ab10907e08648ddfa371e4",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_panic.svg",
+      "sha256": "86d68696c0e158cde6234fa3ecbff0bcfe00afe33251136a919d7fcaebf16cb7",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_stress.svg",
+      "sha256": "a747fd11b905c45281dc84e5952078cbf4f0ea09ea05c72050cd0b64ce09e152",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_stress_heavy.svg",
+      "sha256": "519e1b7176fea26026b2bb9bd26a6a33e630e6b407d63ec71870988e21e4b493",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_11f_talk.svg",
+      "sha256": "54793d5943fefc851659d0f4b09accd8cd95f1f51aeacb8530d56a94e308d8ed",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_kiss_down.svg",
+      "sha256": "152e8f60f7573cdad76e1003d76c2f0fad58ddad9cf0bb1a6b9e61fab894f918",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_kiss_left.svg",
+      "sha256": "490665dc85d5b9730aa247849b0e015d3ea6d62b977c99733920415878a0eefb",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_kiss_right.svg",
+      "sha256": "f1d81a4b09fa9780182457f99c676f3ed9237f5da5551d0cda3fada0605b9d42",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_kiss_up.svg",
+      "sha256": "963034630534b53b34e757fafc010ad6d6af58a275b15dd4ee6c3992c245b047",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_panic.svg",
+      "sha256": "cf3b8e870b50bdc64868053cba8c7896b1b1bd179df402c2b856f0ed4f1b9bae",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_stress.svg",
+      "sha256": "985198eedec4ed03348a86192eb37ccbdcd3c76f1f55d0304e83059892e8fc1a",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_stress_heavy.svg",
+      "sha256": "d681f204eb5930a4c7757858d12e566903464adbf0b8f616879e1bc3677737b7",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_1_talk.svg",
+      "sha256": "a05d99feb262b03ee6ea15d5fb2a93415bca77a4664c54e36ea011ff784233e3",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_kiss_down.svg",
+      "sha256": "3428115b83755d0776c01d26c61150fd6369e6336f1cecbed21c6cf1d1bfb650",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_kiss_left.svg",
+      "sha256": "6b5917141cc1d7a3b9baedb185edcb4d9d99fbd171019e0309333b8b614434a7",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_kiss_right.svg",
+      "sha256": "1649affbead850e75a7468609407894b85f0b3a28c3c88f010b69b883e4844d2",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_kiss_up.svg",
+      "sha256": "b8d1b568bc22a5e70beb1c9aa4d036e81d0cf86c11d20967607cd944a57853ef",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_panic.svg",
+      "sha256": "94de50a8e7ed53d0ceadd3ad7edfbe57209504720e7c51beac06596afe133269",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_stress.svg",
+      "sha256": "d26bf3a2eec1e8776b4cbb59e967627f9e077106d01f49cedd4af7ecc474b140",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_stress_heavy.svg",
+      "sha256": "5936fc325eb0f45b360a9390dd71ade6b688118014b9a6b996c391362eb8c108",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_2_talk.svg",
+      "sha256": "a1ae010c8b0888b076b7a55597deccf8187b180ae39ba45be48f0630e5746319",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_kiss_down.svg",
+      "sha256": "4945e81b17abe54b17f05d3918603719d49e484773dc4aa1dd770dde0b3aa833",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_kiss_left.svg",
+      "sha256": "bbd707629f59605129d9700b5fc1070fdb06f51977354c83c505078e3d2cf993",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_kiss_right.svg",
+      "sha256": "acd106e7ab2a645446ffd1b89bca06c8971d6dd3d05c28b9897b68fc69cb7fba",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_kiss_up.svg",
+      "sha256": "ad22f9b0c9c1acd76e01501704da13cb5b5f65424623c481d6b55fcd69fe6be4",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_panic.svg",
+      "sha256": "209cb299bbe2350f452f9d43cb67fc1ca6f2383e27c9dd495f60c97e5347f3db",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_stress.svg",
+      "sha256": "0c7e6f6689f4cae1dc6f3f3e0a96e5f33dfa00ad540b4c48954649dc771c7443",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_stress_heavy.svg",
+      "sha256": "05305a68376a88b1fa0a4ea79d21270641af9ade34e4d8bcfb229231386e1825",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_3_talk.svg",
+      "sha256": "85e9408b70bfaeeb66c7657c3326a24ecf67817334cceb7a3a6dbe8134242690",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_kiss_down.svg",
+      "sha256": "33be781d9755452a116b086bd087f4225d5699de9eb1d1f978366fc82a6186ec",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_kiss_left.svg",
+      "sha256": "e9f0f8bf1481b3bd89b6ab62efdf572dd46ad329e4aae7096c73a212a4591b03",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_kiss_right.svg",
+      "sha256": "50029b8be4819a25819147b468e61a26577291d04955c6eb82cd214ad184410d",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_kiss_up.svg",
+      "sha256": "f8e9aa8035735da71538f40e1da597bca835a97530ad02bd662a986d4e8045ae",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_panic.svg",
+      "sha256": "8ee0d280bdf7a01d0c8f62b5f1833ec9f0dec10e8c4720621f50744ae910fd5c",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_stress.svg",
+      "sha256": "bee04f95b3fb90d19fa0f7cb1921b9ddf3858010b3e5b663921deff64db7d351",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_stress_heavy.svg",
+      "sha256": "1f7576adb2d8b435ed9310d2011bb29031274458dbf506ebb564a77081fef9c4",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_4_talk.svg",
+      "sha256": "1736325c7ef1b7edbd3243c835e31987710ad551d49376a13c202a03a18c5702",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_kiss_down.svg",
+      "sha256": "4c733518abae7a91ab4b51340306d86868d946ece29e49d4295b79f1f90cc44d",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_kiss_left.svg",
+      "sha256": "7f46be8117f63fe7ce37af5e86fed90e71a6d2a78cca6aa9285d780220d636fd",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_kiss_right.svg",
+      "sha256": "2616adbe727c9f84e25e1d47a72e068212f6f0cebb0c55f383cdf79afeb72e9f",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_kiss_up.svg",
+      "sha256": "1718d90a7938a25f1dc0c26db689df031b21a9172711b51534da089141491ac3",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_panic.svg",
+      "sha256": "875f0b9280a21c88762005834c903d28ab4c977392520333d5e01fc2455a5e52",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_stress.svg",
+      "sha256": "fdb1ecfb6b11dd97a70d90fa86a55248f3274dd9f59ff91a8c16337261004ca9",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_stress_heavy.svg",
+      "sha256": "a9aa4e31f7e7d4fc247cc674653baa6953d66ad6dab41db4e73df333ca78d7e4",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_5_talk.svg",
+      "sha256": "9f14a93f9b6c36116aa811d9726522d3231ad36f20f84741d82b244d0bb64399",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_kiss_down.svg",
+      "sha256": "14df7e83b9459df978f060c317a2b1ea05e0e24a07b9f1ac512642dfa4e3d32a",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_kiss_left.svg",
+      "sha256": "95e33364cb7c510f1c0bab520fae3312b2169c5c2d19261b00c84fb9f472a8ab",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_kiss_right.svg",
+      "sha256": "d842dc595da8fe43a64473f494ad7d3dbed5f4dd42208b57c7e7ee0cfdde4e37",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_kiss_up.svg",
+      "sha256": "13d14a85866f33f02d37ba4ee1f1c5e86d635f1c24786b7ed37fa2dedc67c448",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_panic.svg",
+      "sha256": "148107d4dc74f41c4b35fe029b59e51b5323b7f253e0dfeb6091b3a2dd0a0871",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_stress.svg",
+      "sha256": "6cbbedcb5514c7ff334b316eff7b260f42bf213ca80194415802ec1d1de3e168",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_stress_heavy.svg",
+      "sha256": "af0cb5c7c2c46a5c7f8307e0bab7058655ff3c279cad347895e6e95ead85b0cc",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_6_talk.svg",
+      "sha256": "8361bb9b9bf520228c6f3acf7d4070ac1b3e98b05d8e3ce2ea53d40622b6b11a",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_kiss_down.svg",
+      "sha256": "c93fc449fa6915c0d9f0ed10f0cd6e294e70a932ca99d62e7166d5ffdd985566",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_kiss_left.svg",
+      "sha256": "ca1d68b60580aa9228de3efd9624669aa5a49c96bf7d0b1245943d2e2502ce68",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_kiss_right.svg",
+      "sha256": "5d673b07ff518b6bb211a46d86399ec33178caf8eff53ced0ec7905cad9ca339",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_kiss_up.svg",
+      "sha256": "473f12f4a6545922838afe93c1818844c6e05e30ec549f28f84d19489bfed9b0",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_panic.svg",
+      "sha256": "29e4b6aeb61a2c0c4671dbfc451d0c2a51458867b7745375236c454ceacb711f",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_stress.svg",
+      "sha256": "dc2c95f85bccca495a02db9c6028b31fa3df1576a07feef6cdfd6ff8a841ec0c",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_stress_heavy.svg",
+      "sha256": "b5e68af696a53665a0864af486aa70b76656a0240198bb78f4003ba1df73e554",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_7_talk.svg",
+      "sha256": "fe19c19ec76010116142d4f26f5f2b3f553fcbe14f4f654cfa41a5945577aeb4",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_kiss_down.svg",
+      "sha256": "1a19768a1c505fedf349cbdc1bd59a4ecacf0af02362e404b982a10be9559cc4",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_kiss_left.svg",
+      "sha256": "4f11286662d42faa71289b46f3519b9912520f952a034fd217d656af87ae21db",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_kiss_right.svg",
+      "sha256": "9ebbf13fe383996a19a6b64eedb27bc2bfb262cf364aabe8378151064385288c",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_kiss_up.svg",
+      "sha256": "5bc42ad575c362ea68529de926e5f56f1f61e102f9a86307acf1579f9cc03ba2",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_panic.svg",
+      "sha256": "10c20d982c4714183869decd7cef74a2968fe8b63d9018856efd20cf4909527e",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_stress.svg",
+      "sha256": "e8c7434f9e4fa5ee49e093beb4e08f1e7f2685b32991fc846b8a620540c8ba2a",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_stress_heavy.svg",
+      "sha256": "54be49a60e58c971467e34f515d8a9c54ce0a2cf47b96a30cab4a2b672d98a07",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_8_talk.svg",
+      "sha256": "97c45a1fab342ecb36285e3006a476ce2be58eb074455796880737814b2e91dd",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_kiss_down.svg",
+      "sha256": "8cafc93d83e62fdbc443f41704cb46a88c591452d3d9cf5044e1a21f08b39836",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_kiss_left.svg",
+      "sha256": "4488eebbef8111910bc75bd137ba3e4313b21e825a5816b55350910ef9c2e2dc",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_kiss_right.svg",
+      "sha256": "b86c28cc847b2b670ac684e11e2f07f7698b3817258bb37dbe0deb8da75cf95b",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_kiss_up.svg",
+      "sha256": "24e8cd37636ac408352cdaa300d7849c47933cef9cda50e239e67101a1d4bd19",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_panic.svg",
+      "sha256": "4f39f47918acdc3d6d04151b0efb6698ad4ecf2deffa225e4e65f232344140b5",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_stress.svg",
+      "sha256": "f909c44784273b8b7359b1dffa47bf90adf7dc769251f98c049109f840766b8a",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_stress_heavy.svg",
+      "sha256": "f952ba33745432c0ee0443f019114c927de8f300809e414f382ce2e6ef2c639e",
+      "required_for_build": false
+    },
+    {
+      "path": "art/kawaii/expressions/ball_9_talk.svg",
+      "sha256": "addebeeddc292702256b42cc004047c1553b0e11c9414b24d328a84afafb4d4b",
+      "required_for_build": false
+    },
+    {
+      "path": "fonts/MouldyCheeseRegular-WyMWG.ttf",
+      "sha256": "5a680a476500b430041d449ce289768ca9b791c2807fa79edba8d6466df928fe",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1.png",
+      "sha256": "699403c97466acbe26bdc8013e9cceb07231d5d0a735ad8793d357f6a422b376",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10.png",
+      "sha256": "ad73cac01076e986d154ed89f7a3279831fc0fa75a3f1a7caf56177dfab8c075",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_kiss_down.png",
+      "sha256": "88de188b95c30b22518073db2c8c641737a6f00a7cdfa451f4e5a0af4fbef2fb",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_kiss_left.png",
+      "sha256": "a6e06222ccdaf31203e6bb816cc397b879d24f3e5ceca96c47ede53231440a3b",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_kiss_right.png",
+      "sha256": "49d029096598c308a52ddc5c404e52ea01d3d540cefa5866206c21a124ba4c9d",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_kiss_up.png",
+      "sha256": "858c16d4dd9b58718324707aa25cf181619fa353aee60ee33ba567b26afb71c9",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_panic.png",
+      "sha256": "db5a73b88e66118d903bd46a016a1783961409b7852f7f9d3b6b777709342e7d",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_stress.png",
+      "sha256": "8ac3c9a9b288ea11aeeff05251ecaf6d09d5d7f0f1d987ba06555ea807bbbdf5",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_stress_heavy.png",
+      "sha256": "82e0c6d403c3428c964d7c7d21e8fe8ecd10b635c662a7aca76c77a4482d1149",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_10_talk.png",
+      "sha256": "31b65bd91b2ece78355d42302da3147cb3cc3526743448bc4425b04aadc481c5",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11.png",
+      "sha256": "e416a2dc54e73fd08b28a4f942ea3920acded68029bf01e1fd0dc9bb13404a42",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_kiss_down.png",
+      "sha256": "de05967f71cdcca59d639981d763db1c1ac70fc3d79fe655fe2af33a526fe5ae",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_kiss_left.png",
+      "sha256": "7eeb3efe984374c9f18fa4dc6403d2833ff06f30d0759ac05dcfafae62af802a",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_kiss_right.png",
+      "sha256": "ba93d7c672798c10f52038f579e0935206e481b93fd5328cc4ff9d92aa719748",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_kiss_up.png",
+      "sha256": "b10058fe2268698f5f1498c6573957a484933406710e2d2c24c4502866bc60a3",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_panic.png",
+      "sha256": "8aeb0ad02f143e3976a7d3c840b9662903f8136f874db5a1a1ab73fc4d5bfa8c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_stress.png",
+      "sha256": "31d187fdcb49e7afcc879c1807c66f72d1c0ce4b75932bfb3629147a72ca469a",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_stress_heavy.png",
+      "sha256": "48bc419a458ee715a354ccf1ba8bc9696615c1cd5c34f1921cc98848c708a12d",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11_talk.png",
+      "sha256": "807f9e4f72d573ad74c239fd450cbf7f94aee1b4af916d415fb19b99fcf7f139",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f.png",
+      "sha256": "48b578b5377fc58a7377cab87044b2ab2ab4041dbca84d03d4eaa5c9ec19ab93",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_kiss_down.png",
+      "sha256": "8ad5b2ac050b1dcf5663e27391d55666d3bbec257bc0b91118cc2da7ee6b723f",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_kiss_left.png",
+      "sha256": "68590e4af9dbd1f704c4db9991067e2f5b069d75ed28ac8f40adc82238660bee",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_kiss_right.png",
+      "sha256": "f9573e6a8f1b0ca7b5344583c2de0f8c8ddd9e9dd5da6f3a45eb52c1d5aa921c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_kiss_up.png",
+      "sha256": "92af9fff6f118606004da820060898ff9372cef439ddc127dcb510a79ce1318e",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_panic.png",
+      "sha256": "f5d3a92227cbb455c47c32e306cbf9f1b316f113869508dfe794adb3e011666d",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_stress.png",
+      "sha256": "5580ff662c2b1ae8f5a904ff61068d5939e32f01a844eab330987065d97c74ec",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_stress_heavy.png",
+      "sha256": "e92e359f1485ad6b531f4308a21a3a5a53bcadf15a4eb4fb3db9f97096cd1827",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_11f_talk.png",
+      "sha256": "f253d852bb49366886cccff9cc8af0b2aa809ecc200c48794cd9654d8bbdbe75",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_kiss_down.png",
+      "sha256": "faf62756d5b71aa0b92a21868722d67cdae2fe8460362de2a2718c071565c733",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_kiss_left.png",
+      "sha256": "0cdfaff9a773e94e8893b89d6cc822ed9ccdd1e05a28da306cafcd012c971f9c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_kiss_right.png",
+      "sha256": "11be57d0970210aa8737b79d9e93e2a588c408d6044ed22648b91624298e5a99",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_kiss_up.png",
+      "sha256": "b8b400c93cf977a2f81f377944af27aee80c3ecb6a5bc6597f76d81432ee58b2",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_panic.png",
+      "sha256": "37f6e5467e346e4572006123f99736594bafb5a4444664af4c2e837da908d822",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_stress.png",
+      "sha256": "c8dce37eed142fd4433696e93ba78c4b048bd71502f640062bd08c994667ea91",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_stress_heavy.png",
+      "sha256": "ace532cdd8783ae85ec64c970b4ce0f400f7cdb2f49fffb5e1bfc99e1402e23c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_1_talk.png",
+      "sha256": "7af33603ea351dc460570cf9e0dd9f66ca063d8a5be574c6f28bbbb5f7d3c69a",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2.png",
+      "sha256": "a244233663355e8ab525b2bf8c0193c176a938273942f30789d0fd51d3e317ca",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_kiss_down.png",
+      "sha256": "4b5132995865ed3fdae950550d05534175b1fe14aa1a195f54c535c217e05345",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_kiss_left.png",
+      "sha256": "ce1e6327f6f465e8f0d4cd06720672a2340aac32b40137d4efe4853f6b3aa793",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_kiss_right.png",
+      "sha256": "119b71fba81b25c87c9ad8ead59fe4d76e43d6ced3e81ad357041a149858a1d8",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_kiss_up.png",
+      "sha256": "0ea38f1ea9667098a31c4681dafac37ae04849532e0453c6d09ce1bb3d3ff02c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_panic.png",
+      "sha256": "e8380705ccd34757ff8be425d854a0084da84d1bface6a8b9f447dee1154750e",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_stress.png",
+      "sha256": "0f8d6ec872bb80386052f946b69fea950c6e5cc1f753ec8d867aecff80377104",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_stress_heavy.png",
+      "sha256": "6502a86e61647d4b474a0acce647efb236c855d99fab9e791b29babfcb75ce90",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_2_talk.png",
+      "sha256": "f4fcb152b08d537050b78b9114282ef4910cbe72fb21f17d31f4c1c3f037ccd3",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3.png",
+      "sha256": "de144bc65cc18964ddb31e99f36d0201fa8fa01a396c28cb0c2564a11fe8681a",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_kiss_down.png",
+      "sha256": "e94527f2d2aab45bddf2a237517f88427d5bb25d2ed2b440128e7e497df775d8",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_kiss_left.png",
+      "sha256": "c81152533a53f06810577762573778c3c45f8aaecce8a2d8cb1da61b1873a259",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_kiss_right.png",
+      "sha256": "6c0bc7f3eca03b0b0a0abd4e99a5a3450fcdc5daf6fa1476ffe080513dde44a6",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_kiss_up.png",
+      "sha256": "de615a87801a17fe5000f05ebb8e9e528957e6819222172786c820a07e567198",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_panic.png",
+      "sha256": "2799fc412752bcbed81f202a22c378524af47774c66a273561237a494ceb005b",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_stress.png",
+      "sha256": "faab7625f8c4886285b99e0032e7d9603286c77d334525965201e9ae0f616d07",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_stress_heavy.png",
+      "sha256": "d83e12b3fdbb7c1077fe461908c52e2fb07ef2c2d4dafd3e57c55cd49ae3d4f1",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_3_talk.png",
+      "sha256": "3b31e4c9c0baa521f2298e575d8297c7a23d25a234d01242dddedfa7ef378150",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4.png",
+      "sha256": "9fd0aa9e56560d63b5ceb42eb72458c4acee034ca39a3d9120641489993d05ce",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_kiss_down.png",
+      "sha256": "b39dfaee7d72e176c3eb91c301cc20f53d4934c8b4ad33754b0b9cd80698bae6",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_kiss_left.png",
+      "sha256": "34fde31d3d08ed4ffeb8378f13d168f5a08e71ffb58ca7821fa5a085040f8741",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_kiss_right.png",
+      "sha256": "be2ff4e6bd0ed7c94722a2692a84338b8026dffb7b47b9c12dfb3ac5752eeb01",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_kiss_up.png",
+      "sha256": "c7436302525ca88b07061108b21cea3fae1f26455c78dc875bc94aa5ea09830a",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_panic.png",
+      "sha256": "c5c90a882b75e289c7514a9f6ea848e5d927cbbb7f2a831ea9a656b2a50d43e5",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_stress.png",
+      "sha256": "ec32f764f3c9d804a2bbfb22db2bf4c7c34e90c7ac4a5e87c387e83b1217d3f5",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_stress_heavy.png",
+      "sha256": "fa975d73cc4b4c3576f0676aef946290efce451dd6756dfde420bc5972a0e4fd",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_4_talk.png",
+      "sha256": "489c25e3a9a8edd77fbc468f258901da9f8b9fda2311b611c6ab49410a53ae1d",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5.png",
+      "sha256": "752fe603ad74ae1e18a8bc604504b454722faebc5e053689916af9789c00d1ec",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_kiss_down.png",
+      "sha256": "33de36a545f8d81a921a263521073a797182573789554767d477239d7a3f9676",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_kiss_left.png",
+      "sha256": "263c8b5327e1874092cafc7a553d0cb093590c1cddf8fcee194f68814f99e31e",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_kiss_right.png",
+      "sha256": "3075a96b90efd2d86ec95e74ea284f92291f542d5c2a0fc7328387a8de307c99",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_kiss_up.png",
+      "sha256": "352e938d80e3694bd3eb179f2847c296c2835b996ddc144973a65fad33de81b8",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_panic.png",
+      "sha256": "0d10793a805ef49ba90e909c0d497df56d6b0e2a6f385be235ac70b133d9d889",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_stress.png",
+      "sha256": "312bbcf04fb1c29d7271d9de83811312b6f57402034991d5dc60a207376dc237",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_stress_heavy.png",
+      "sha256": "a74de06b18e35a636bf42b51f0878af27a5b209404802c1d41ffbddf8492ee76",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_5_talk.png",
+      "sha256": "19cc1785acc397ca5da2dd6ca8fa9c3f525f29c5ca121155f9ebdffc3d7295ee",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6.png",
+      "sha256": "80ce04ccd10556d41a1ef5df0c6e35b12ae3e2ddc85c4af55521c99c6d7b01a4",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_kiss_down.png",
+      "sha256": "88bb1d5a0489efd7c1c5ccd8c3701b2c37269ea86b05fdaf6d136941ebcbbc99",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_kiss_left.png",
+      "sha256": "dc35e30170f3936492a674502172adbba4a9b7e10397aa4c3886cba1f63cdc4c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_kiss_right.png",
+      "sha256": "d132a6d7de55aa47302a64300d08c7321b046f531606c94c1434c70a6622e5a7",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_kiss_up.png",
+      "sha256": "9db6589b43c21242db931981c2dd630b4b349248056f0456d77b0efc7c27e3cd",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_panic.png",
+      "sha256": "f78d8081eba4e7d208d939df4accf6c7937f8655085ecba42e5cc2f67a8ecd06",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_stress.png",
+      "sha256": "6dbecfd118bd70ec9f1db299278369de163db5ca6bfdd70da16034658e98b91c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_stress_heavy.png",
+      "sha256": "d9b3d0c83f64519a69a333b350c6f0d0cd79bbf135c4cf9c3bf8a80a39cd8dc8",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_6_talk.png",
+      "sha256": "f5041a2d9a4d05d1ee89e9eee6d90555ebeea8d93e7456bc3e42bbb745895c47",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7.png",
+      "sha256": "1b580bd71ba94d0f2660e6084314abce278e2e4942354eab6bf8917c9457107d",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_kiss_down.png",
+      "sha256": "edbc27e7e4a8d01441f97cf23bd565e372f5914261f34079f63ff2133c1622e5",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_kiss_left.png",
+      "sha256": "e9c235fd8c308010036d72e023dbf2bdd4141382792ba160650ece307c18d639",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_kiss_right.png",
+      "sha256": "96523fe412f7ce560fc899fb1731318fa23f83a22c99faa5703c156cce677e8b",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_kiss_up.png",
+      "sha256": "2b0f8f0014c58dbffccd5370f14c9ba20714caf0f13ac8fd597465bfe1137462",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_panic.png",
+      "sha256": "11a7e9dd3fba5f2f7d15d6241cb324d8fe0426530984bbc3b2f61d057af81571",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_stress.png",
+      "sha256": "5acfea5cb141f31a00c2d1003584f4d006520e15ab8db6f989785ddc1df5ff37",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_stress_heavy.png",
+      "sha256": "6179162ba1b4f76c747a3777d25c599b305861f139e8fddd3db133af84bfbd76",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_7_talk.png",
+      "sha256": "9d047c7fd51515b91839c56d758157756328cc1a9fe2b0d232823d11c9ebdfea",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8.png",
+      "sha256": "3e714fafeaa7b7b8a07ec5d7ba15add5df99fffef777ec5665bfb7ba09670649",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_kiss_down.png",
+      "sha256": "8723d5cd52c7fcec6b587b09585efe96f8c9950cc1c955e36db3fcfe96246094",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_kiss_left.png",
+      "sha256": "83fd87242c6c5954e48ea2794ff76cad3688d765118f0d8d8ae6a9dd9a40e005",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_kiss_right.png",
+      "sha256": "77020361362a378d183e37163e33efaa774827b14dd9aa8bd608854109ab0426",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_kiss_up.png",
+      "sha256": "a4ee1808370fec11f4d06a8662460b6655df0c97fb86d7da1bd72becc0885551",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_panic.png",
+      "sha256": "3bbe1166153f5da7d8a5ed1448bc33ff00cac7c0346b23c1a23cc8b08c81e8c5",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_stress.png",
+      "sha256": "c05a947e4f88168c1b620b8ef95f2084b717e25fee46fbf7780072e69f1751d1",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_stress_heavy.png",
+      "sha256": "9e6270e10fb40843665730802731c9c073b044a8704f297fd7e7cc5ee66ae908",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_8_talk.png",
+      "sha256": "5e1760de73d9cbbf6545f280077fa0f98dd7b221ece4c71bcb044f904b2a0e6c",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9.png",
+      "sha256": "4572c0dabbdb1af4f08473c6f3422a3f3b817bc90b1df38d12cc0c4ab97bd69a",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_kiss_down.png",
+      "sha256": "7ced510df094528dc18b7b432f468b38b91d04bc4015cafc7cfbacaf475419d3",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_kiss_left.png",
+      "sha256": "861bd92891e41d0b0f9ef75ac886641d9a4ac18d027552644ee016781668413a",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_kiss_right.png",
+      "sha256": "d208986baf2cc9ac5b2b47f356411756e4a0226b543fa11ecc1aa4a30aa69ab7",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_kiss_up.png",
+      "sha256": "36ca006fbf4cc38fb7adf06d2e560014165c6c23da9348c78fbe944452bff153",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_panic.png",
+      "sha256": "16472f20c5774dc16a62dc61565225c2c3a13995fa603de44d9e6c333436bac0",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_stress.png",
+      "sha256": "844b09033d6f042ec66453383730134e5758ec3e060e90dfcc3ec152152f80a2",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_stress_heavy.png",
+      "sha256": "4943d557e948204b6af72f4ecc73c5010bc22dd41e163525630777be285ad143",
+      "required_for_build": true
+    },
+    {
+      "path": "images/ball_9_talk.png",
+      "sha256": "bf8dfafde522becef73a7091c4031e1b2b7d69417d1c66c090b5c14f17367d34",
+      "required_for_build": true
+    },
+    {
+      "path": "sound/chain.ogg",
+      "sha256": "c7b7c87dfb227fbc823a028e2668b5a3ed1b010552532c5eb943f7a4cd4329ff",
+      "required_for_build": true
+    },
+    {
+      "path": "sound/golden.ogg",
+      "sha256": "4d6383d02f62a72812c0ae0000f6fbb1c2be907c3993700c6024d66b11c9bf85",
+      "required_for_build": true
+    },
+    {
+      "path": "sound/gusher.ogg",
+      "sha256": "1273e6e7d6fc6ddc92ad42e46229a18a9ee585582515885f11ec8a1b33528a8a",
+      "required_for_build": true
+    },
+    {
+      "path": "sound/pap.ogg",
+      "sha256": "64b02cc92a580dcc632a55e05e3399d35f347af4b877ca23593bcda4903c9102",
+      "required_for_build": true
+    },
+    {
+      "path": "sound/pop.ogg",
+      "sha256": "c5f95b285ca921a0f4a606a290aafea37427250e35b405363be1cc88bc5c18ba",
+      "required_for_build": true
+    },
+    {
+      "path": "sound/squelch.ogg",
+      "sha256": "cb7256762e4dea73965b7ba9a7629649269560beaae70dbdf3d299b7c8619b6d",
+      "required_for_build": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+game_file,source_art,width,height,notes
+ball_1.png,Cherry.svg,80,80,RDBI original design
+ball_2.png,Blueberry.svg,100,100,RDBI original design
+ball_3.png,PassionFruit.svg,125,125,RDBI original design
+ball_4.png,Kiwi.svg,140,140,RDBI original design
+ball_5.png,Orange.svg,165,165,RDBI original design
+ball_6.png,Peach.svg,190,190,RDBI original design
+ball_7.png,Coconut.svg,220,220,RDBI original design
+ball_8.png,Pineapple.svg,250,250,RDBI original design
+ball_9.png,Honeydew.svg,270,270,Adapted from Cherry.svg
+ball_10.png,Cantaloupe.svg,300,300,Adapted from Cherry.svg
+ball_11.png,WatermelonFull.svg,330,330,RDBI original design
+ball_11f.png,GoldenWatermelon.svg,330,330,Golden adaptation of the whole watermelon

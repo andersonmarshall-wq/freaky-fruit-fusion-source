@@ -1,0 +1,44 @@
+local saver=require('logic.module.saver')
+local tracks=require('logic.module.music_tracks')
+local FADE=4
+local function start(self,index)
+    self.active=index;self.elapsed=0
+    sound.play(index==1 and '#music_a' or '#music_b',{gain=0})
+end
+local function settings(self)
+    local data=saver.load()
+    self.music_on=data.music~=false;self.sfx_on=data.sfx~=false
+    self.music_volume=data.music_volume or 0.8
+    sound.set_group_gain('sfx',self.sfx_on and 0.75 or 0)
+    sound.set_group_gain('voices',self.sfx_on and data.chatter~=false and .65 or 0)
+end
+function init(self)
+    settings(self);self.music_gain=0;self.previous=nil;start(self,1)
+end
+function on_message(self,id,m)
+    if id==hash('audio_settings') then settings(self)
+    elseif id==hash('fruit_chorus') then
+        -- A bounded chorus represents the whole pile without clipping 100 voices.
+        local count=math.min(8,m.count)
+        for i=1,count do
+            timer.delay((i-1)*.045,false,function()
+                sound.play('#scream_'..((i-1)%4+1),{gain=.48/math.sqrt(count),speed=.84+i*.055})
+            end)
+        end
+    end
+end
+function update(self,dt)
+    self.music_gain=self.music_gain+((self.music_on and self.music_volume or 0)-self.music_gain)*math.min(1,dt*4)
+    sound.set_group_gain('music',self.music_gain)
+    self.elapsed=self.elapsed+dt
+    if self.elapsed>=tracks[self.active].duration-FADE then
+        self.previous=self.active;start(self,self.active==1 and 2 or 1)
+    end
+    local phase=math.min(1,self.elapsed/FADE)*math.pi*0.5
+    sound.set_gain(self.active==1 and '#music_a' or '#music_b',math.sin(phase))
+    if self.previous then
+        local previous_url=self.previous==1 and '#music_a' or '#music_b'
+        sound.set_gain(previous_url,math.cos(phase))
+        if self.elapsed>=FADE then sound.stop(previous_url);self.previous=nil end
+    end
+end

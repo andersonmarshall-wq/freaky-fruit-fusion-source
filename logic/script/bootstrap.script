@@ -1,0 +1,27 @@
+local report=require('logic.module.startup_report')
+local function start(self)
+    if self.loading then return end
+    self.loading=true
+    report.set_stage('Loading game assets')
+    msg.post('#loading','startup_loading')
+    -- Preserve the failing load path so any new crash identifies the real cause.
+    timer.delay(.15,false,function() msg.post('#main','async_load') end)
+end
+function init(self)
+    msg.post('.', 'acquire_input_focus')
+    self.loading=false
+    if not report.init() then timer.delay(.2,false,function() start(self) end) end
+end
+function on_message(self,id,m,sender)
+    if id==hash('startup_retry') then
+        start(self)
+    elseif id==hash('proxy_loaded') then
+        report.set_stage('Starting game objects')
+        msg.post(sender,'init');msg.post(sender,'enable')
+        print('FRUIT_BOOT: main resources loaded')
+    elseif id==hash('game_ready') then
+        report.set_stage('Game ready')
+        print('FRUIT_BOOT: game UI ready')
+        msg.post('#loading','disable')
+    end
+end

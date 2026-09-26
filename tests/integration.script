@@ -1,0 +1,87 @@
+-- Runs only in the isolated engine-test copy produced by run_engine_tests.py.
+local balls=require('logic.module.balls')
+local reg=require('logic.module.reg')
+local function url(id,c) return msg.url(nil,id,c) end
+local function number(id) return go.get(url(id,'ball'),'ball_number') end
+local function make(tier,x,y)
+    local name=tier==12 and 'ball_11f' or 'ball_'..tier
+    local id=factory.create('/ball_factories#'..name,vmath.vector3(x,y,0),nil,{is_dynamic=true},1)
+    balls.add_ball(id);return id
+end
+local function clear()
+    for _,id in ipairs(balls.get()) do if go.exists(id) then go.delete(id) end end
+    balls.reset();reg.set('score',0);reg.set('gameover',false);reg.set('panel_avaliable',true)
+    msg.post('/merge_manager','replay')
+end
+local function only_tier(tier)
+    for _,id in ipairs(balls.get()) do if go.exists(id) and number(id)==tier then return id end end
+    error('Expected fruit tier '..tier)
+end
+function init(self)
+    self.time=0;self.phase=0;self.errors={}
+    -- The pressure experiment must not lose because of temporary spawn heights.
+    msg.post('/detector','disable');reg.set('smooches',false);reg.set('chatter',false)
+end
+local function step(self,dt)
+    self.time=self.time+dt
+    if self.phase==0 and self.time>.2 then
+        clear();self.peach=make(6,190,301);make(7,190,507);make(11,190,783)
+        self.coconut=make(7,530,316);make(11,530,592)
+        self.phase=1;self.since=self.time
+    elseif self.phase==1 and self.time-self.since>5 then
+        local soft=go.get(url(self.peach,'ball'),'compression')
+        local hard=go.get(url(self.coconut,'ball'),'compression')
+        local y=go.get_position(self.peach).y
+        print(string.format('PRESSURE soft=%.5f hard=%.5f peach_y=%.2f stress=%.3f',soft,hard,y,go.get(url(self.peach,'ball'),'stress')))
+        assert(soft>.045,'Peach did not retain pressure deformation')
+        assert(hard<soft*.55,'Coconut did not stay firmer')
+        assert(y<298,'Collider compliance did not allow real settling')
+        assert(go.get(url(self.peach,'ball'),'stress')>.15,'Load did not produce stress')
+        clear();self.a=make(1,170,235);self.b=make(1,270,235)
+        msg.post('/merge_manager','dropped',{id=self.a})
+        msg.post('/merge_manager','collision_detected',{id=self.a,other_id=self.b})
+        msg.post('/merge_manager','collision_detected',{id=self.b,other_id=self.a})
+        self.phase=2;self.since=self.time
+    elseif self.phase==2 and self.time-self.since>.2 then
+        assert(reg.check('score')==1,'Direct merge or duplicate collision scored incorrectly')
+        assert(#balls.get()==1,'Duplicate collision created extra fruit')
+        local first=only_tier(2);local next=make(2,350,240)
+        msg.post('/merge_manager','collision_detected',{id=first,other_id=next})
+        self.phase=3;self.since=self.time
+    elseif self.phase==3 and self.time-self.since>.2 then
+        assert(reg.check('score')==5,'Secondary merge did not earn x2')
+        local first=only_tier(3);local next=make(3,400,250)
+        msg.post('/merge_manager','collision_detected',{id=first,other_id=next})
+        self.phase=4;self.since=self.time
+    elseif self.phase==4 and self.time-self.since>.2 then
+        assert(reg.check('score')==17,'Tertiary merge did not earn x3')
+        clear();self.small=make(1,120,225);self.large=make(6,340,280)
+        self.gold=make(12,540,600)
+        self.phase=5;self.since=self.time
+    elseif self.phase==5 and self.time-self.since>.9 then
+        msg.post('/merge_manager','shake')
+        self.phase=6;self.since=self.time
+    elseif self.phase==6 and self.time-self.since>.10 then
+        assert(not balls.contains(self.small),'Shake did not remove tiny fruit atomically')
+        assert(balls.contains(self.large) and balls.contains(self.gold),'Shake removed a large fruit')
+        assert(go.get(url(self.large,'collisionobject'),'linear_velocity').y>80,'Large fruit did not bounce')
+        assert(go.get(url(self.large,'sprite'),'animation')==hash('ball_6_panic'),'Shake did not set the startled face')
+        assert(number(self.gold)==12,'Whole golden final tier was lost')
+        self.protected=make(2,115,235)
+        msg.post('/merge_manager','shake')
+        self.phase=7;self.since=self.time
+    elseif self.phase==7 and self.time-self.since>.4 then
+        assert(balls.contains(self.protected),'Cooldown allowed a second clear')
+        assert(not go.exists(self.small),'Popped fruit was not deleted')
+        assert(reg.check('score')==0,'Popping fruit incorrectly awarded merge points')
+        print('ENGINE_INTEGRATION_PASS: pressure, actual settling, stress, atomic merge, x2/x3, shake, cooldown, panic face, golden tier')
+        clear();msg.post('@system:','exit',{code=0});self.phase=8
+    end
+    assert(self.time<12,'Engine test timed out')
+end
+
+function update(self,dt)
+    if self.failed then return end
+    local ok,err=pcall(step,self,dt)
+    if not ok then self.failed=true;print("ENGINE_INTEGRATION_FAIL: "..tostring(err));msg.post("@system:","exit",{code=1}) end
+end

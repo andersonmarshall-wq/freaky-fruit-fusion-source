@@ -1,0 +1,513 @@
+images {
+  image: "/images/ball_1.png"
+}
+images {
+  image: "/images/ball_2.png"
+}
+images {
+  image: "/images/ball_3.png"
+}
+images {
+  image: "/images/ball_4.png"
+}
+images {
+  image: "/images/ball_5.png"
+}
+images {
+  image: "/images/ball_6.png"
+}
+images {
+  image: "/images/ball_7.png"
+}
+images {
+  image: "/images/ball_8.png"
+}
+images {
+  image: "/images/ball_9.png"
+}
+images {
+  image: "/images/ball_10.png"
+}
+images {
+  image: "/images/ball_11.png"
+}
+images {
+  image: "/images/line.png"
+}
+images {
+  image: "/images/bag.png"
+}
+images {
+  image: "/images/bag_line.png"
+}
+images {
+  image: "/images/empty2.png"
+}
+images {
+  image: "/images/second_ball_place.png"
+}
+images {
+  image: "/images/menu_button.png"
+}
+images {
+  image: "/images/music_button.png"
+}
+images {
+  image: "/images/panel_template.png"
+}
+images {
+  image: "/images/sfx_button.png"
+}
+images {
+  image: "/images/vibration_button_0.png"
+}
+images {
+  image: "/images/vibration_button_1.png"
+}
+images {
+  image: "/images/vibration_button_2.png"
+}
+images {
+  image: "/images/disabled_button.png"
+}
+images {
+  image: "/images/crown.png"
+}
+images {
+  image: "/images/green_button.png"
+}
+images {
+  image: "/images/green_play_icon.png"
+}
+images {
+  image: "/images/yellow_button.png"
+}
+images {
+  image: "/images/yellow_replay_icon.png"
+}
+images {
+  image: "/images/empty.png"
+}
+images {
+  image: "/images/smoke.png"
+}
+images {
+  image: "/images/boom_button.png"
+}
+images {
+  image: "/images/tricks_button.png"
+}
+images {
+  image: "/images/vs_button.png"
+}
+images {
+  image: "/images/ball_11f.png"
+}
+images {
+  image: "/images/line_half.png"
+}
+extrude_borders: 2
+
+images {
+  image: "/images/ball_10_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_10_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_10_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_10_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_11_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_11_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_11_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_11_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_11f_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_11f_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_11f_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_11f_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_1_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_1_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_1_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_1_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_2_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_2_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_2_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_2_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_3_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_3_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_3_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_3_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_4_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_4_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_4_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_4_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_5_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_5_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_5_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_5_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_6_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_6_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_6_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_6_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_7_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_7_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_7_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_7_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_8_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_8_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_8_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_8_kiss_up.png"
+}
+
+images {
+  image: "/images/ball_9_kiss_down.png"
+}
+
+images {
+  image: "/images/ball_9_kiss_left.png"
+}
+
+images {
+  image: "/images/ball_9_kiss_right.png"
+}
+
+images {
+  image: "/images/ball_9_kiss_up.png"
+}
+
+images {
+  image: "/images/golden_glow.png"
+}
+
+images {
+  image: "/images/heart.png"
+}
+
+images {
+  image: "/images/sparkle.png"
+}
+
+images {
+  image: "/images/pill.png"
+}
+
+images {
+  image: "/images/ball_10_panic.png"
+}
+
+images {
+  image: "/images/ball_10_stress.png"
+}
+
+images {
+  image: "/images/ball_10_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_10_talk.png"
+}
+
+images {
+  image: "/images/ball_11_panic.png"
+}
+
+images {
+  image: "/images/ball_11_stress.png"
+}
+
+images {
+  image: "/images/ball_11_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_11_talk.png"
+}
+
+images {
+  image: "/images/ball_11f_panic.png"
+}
+
+images {
+  image: "/images/ball_11f_stress.png"
+}
+
+images {
+  image: "/images/ball_11f_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_11f_talk.png"
+}
+
+images {
+  image: "/images/ball_1_panic.png"
+}
+
+images {
+  image: "/images/ball_1_stress.png"
+}
+
+images {
+  image: "/images/ball_1_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_1_talk.png"
+}
+
+images {
+  image: "/images/ball_2_panic.png"
+}
+
+images {
+  image: "/images/ball_2_stress.png"
+}
+
+images {
+  image: "/images/ball_2_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_2_talk.png"
+}
+
+images {
+  image: "/images/ball_3_panic.png"
+}
+
+images {
+  image: "/images/ball_3_stress.png"
+}
+
+images {
+  image: "/images/ball_3_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_3_talk.png"
+}
+
+images {
+  image: "/images/ball_4_panic.png"
+}
+
+images {
+  image: "/images/ball_4_stress.png"
+}
+
+images {
+  image: "/images/ball_4_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_4_talk.png"
+}
+
+images {
+  image: "/images/ball_5_panic.png"
+}
+
+images {
+  image: "/images/ball_5_stress.png"
+}
+
+images {
+  image: "/images/ball_5_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_5_talk.png"
+}
+
+images {
+  image: "/images/ball_6_panic.png"
+}
+
+images {
+  image: "/images/ball_6_stress.png"
+}
+
+images {
+  image: "/images/ball_6_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_6_talk.png"
+}
+
+images {
+  image: "/images/ball_7_panic.png"
+}
+
+images {
+  image: "/images/ball_7_stress.png"
+}
+
+images {
+  image: "/images/ball_7_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_7_talk.png"
+}
+
+images {
+  image: "/images/ball_8_panic.png"
+}
+
+images {
+  image: "/images/ball_8_stress.png"
+}
+
+images {
+  image: "/images/ball_8_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_8_talk.png"
+}
+
+images {
+  image: "/images/ball_9_panic.png"
+}
+
+images {
+  image: "/images/ball_9_stress.png"
+}
+
+images {
+  image: "/images/ball_9_stress_heavy.png"
+}
+
+images {
+  image: "/images/ball_9_talk.png"
+}
+
+images {
+  image: "/images/droplet.png"
+}
